@@ -1,2 +1,2 @@
 # Bluespexamples
-Bluespe Examples (bluespexamples)
+Bluespec Examples (bluespexamples)
