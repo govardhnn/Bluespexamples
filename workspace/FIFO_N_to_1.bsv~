@@ -1,0 +1,1 @@
+bsc -u -sim -bdir build -info-dir build -vdir build -g mkMAC_Testbench MAC.bsv MAC_Testbench.bsv
