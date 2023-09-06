@@ -1,8 +1,5 @@
 # Bluespexamples
-<<<<<<< HEAD
 Bluespec Examples (Bluespexamples)
-=======
-
 ## Resources: 
 ### Courses
 [6.175 - Constructive Computer Architecture (Fall 2017)](http://csg.csail.mit.edu/6.175/index.html) <br>
@@ -11,4 +8,3 @@ Bluespec Examples (Bluespexamples)
 ### Readings
 [BSV by example](http://csg.csail.mit.edu/6.175/resources/bsv_by_example.pdf) <br>
 [Computer Architecture: A Constructive Approach](http://csg.csail.mit.edu/6.175/resources/archbook_2015-08-25.pdf)
->>>>>>> origin/main
