@@ -1,0 +1,217 @@
+$date
+	Wed Sep  6 10:38:53 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module main $end
+$var reg 1 ! CLK $end
+$var reg 1 " RST $end
+$var reg 32 # cycle [31:0] $end
+$var reg 1 $ do_cycles $end
+$var reg 1 % do_fsdb $end
+$var reg 1 & do_fst $end
+$var reg 1 ' do_vcd $end
+$var reg 2048 ( filename [2048:1] $end
+$scope module top $end
+$var wire 1 ) CAN_FIRE_RL_finish_shift $end
+$var wire 1 * CAN_FIRE_RL_request $end
+$var wire 1 ! CLK $end
+$var wire 1 " RST_N $end
+$var wire 1 + WILL_FIRE_RL_finish_shift $end
+$var wire 1 , WILL_FIRE_RL_request $end
+$var wire 8 - \rg_x$D_IN [7:0] $end
+$var wire 1 . \rg_x$EN $end
+$var wire 3 / \rg_y$D_IN [2:0] $end
+$var wire 1 0 \rg_y$EN $end
+$var wire 1 1 \shifter$EN_do_shift $end
+$var wire 1 2 \shifter$EN_get_rsp $end
+$var wire 3 3 \shifter$do_shift_amt [2:0] $end
+$var wire 8 4 \shifter$do_shift_data [7:0] $end
+$var wire 8 5 \shifter$get_rsp [7:0] $end
+$var wire 1 6 \shifter$RDY_get_rsp $end
+$var wire 1 7 \shifter$RDY_do_shift $end
+$var reg 8 8 rg_x [7:0] $end
+$var reg 3 9 rg_y [2:0] $end
+$scope module shifter $end
+$var wire 1 ! CLK $end
+$var wire 1 1 EN_do_shift $end
+$var wire 1 2 EN_get_rsp $end
+$var wire 1 " RST_N $end
+$var wire 1 : WILL_FIRE_RL_rl_2 $end
+$var wire 1 ; WILL_FIRE_RL_rl_3 $end
+$var wire 1 < WILL_FIRE_do_shift $end
+$var wire 1 = WILL_FIRE_get_rsp $end
+$var wire 3 > do_shift_amt [2:0] $end
+$var wire 8 ? do_shift_data [7:0] $end
+$var wire 8 @ get_rsp [7:0] $end
+$var wire 3 A \reg_amt$D_IN [2:0] $end
+$var wire 1 B \reg_amt$EN $end
+$var wire 1 C \reg_data$EN $end
+$var wire 1 D \reg_state$EN $end
+$var wire 1 6 RDY_get_rsp $end
+$var wire 1 7 RDY_do_shift $end
+$var wire 8 E \MUX_reg_data$write_1__VAL_3 [7:0] $end
+$var wire 8 F \MUX_reg_data$write_1__VAL_2 [7:0] $end
+$var wire 8 G \MUX_reg_data$write_1__VAL_1 [7:0] $end
+$var wire 1 H CAN_FIRE_get_rsp $end
+$var wire 1 I CAN_FIRE_do_shift $end
+$var wire 1 J CAN_FIRE_RL_rl_3 $end
+$var wire 1 K CAN_FIRE_RL_rl_2 $end
+$var reg 3 L reg_amt [2:0] $end
+$var reg 8 M reg_data [7:0] $end
+$var reg 8 N \reg_data$D_IN [7:0] $end
+$var reg 2 O reg_state [1:0] $end
+$var reg 2 P \reg_state$D_IN [1:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b11 P
+b10 O
+b10101010 N
+b10101010 M
+b10 L
+0K
+1J
+0I
+0H
+b10101000 G
+b10101010 F
+b10101010 E
+1D
+1C
+0B
+b10 A
+b10101010 @
+b10101010 ?
+b10 >
+0=
+0<
+1;
+0:
+b10 9
+b10101010 8
+07
+06
+b10101010 5
+b10101010 4
+b10 3
+02
+01
+00
+b0 /
+0.
+b0 -
+0,
+0+
+0*
+0)
+b110010001110101011011010111000000101110011101100110001101100100 (
+1'
+0&
+0%
+0$
+b0 #
+0"
+x!
+$end
+#1
+b0 G
+1D
+b1 P
+b10110 N
+b0 F
+b10110 E
+1<
+1B
+11
+1,
+1*
+17
+1I
+0;
+0J
+b0 O
+b0 5
+b0 @
+b0 M
+b0 L
+b11 A
+b11 3
+b11 9
+b11 >
+b1011 4
+b1011 8
+b1011 ?
+1!
+b1 #
+#2
+1"
+#5
+0!
+#10
+b1011000 G
+b10 P
+b1011000 N
+b10110 F
+0<
+0B
+01
+0,
+0*
+07
+0I
+1:
+1K
+b1 O
+b10110 5
+b10110 @
+b10110 M
+b11 L
+1!
+#11
+b10 #
+#15
+0!
+#20
+b1100000 G
+b11 P
+b1011000 F
+0:
+0K
+1;
+1J
+b10 O
+b1011000 5
+b1011000 @
+b1011000 M
+1!
+#21
+b11 #
+#25
+0!
+#30
+0C
+1D
+b0 P
+b10101010 N
+1=
+12
+1+
+1)
+16
+1H
+0;
+0J
+b11 O
+1!
+#31
+b100 #
+#35
+0!

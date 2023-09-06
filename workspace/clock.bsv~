@@ -1,6 +1,0 @@
-package clock;
-(*synthesize*)
-module
-   
-endmodule 
-endpackage
