@@ -1,5 +1,5 @@
 $date
-	Wed Sep  6 10:38:53 2023
+	Fri Sep  8 12:11:42 2023
 $end
 $version
 	Icarus Verilog
@@ -17,97 +17,86 @@ $var reg 1 & do_fst $end
 $var reg 1 ' do_vcd $end
 $var reg 2048 ( filename [2048:1] $end
 $scope module top $end
-$var wire 1 ) CAN_FIRE_RL_finish_shift $end
-$var wire 1 * CAN_FIRE_RL_request $end
+$var wire 1 ) CAN_FIRE_RL_request_pipe $end
 $var wire 1 ! CLK $end
 $var wire 1 " RST_N $end
-$var wire 1 + WILL_FIRE_RL_finish_shift $end
-$var wire 1 , WILL_FIRE_RL_request $end
-$var wire 8 - \rg_x$D_IN [7:0] $end
-$var wire 1 . \rg_x$EN $end
-$var wire 3 / \rg_y$D_IN [2:0] $end
-$var wire 1 0 \rg_y$EN $end
-$var wire 1 1 \shifter$EN_do_shift $end
-$var wire 1 2 \shifter$EN_get_rsp $end
-$var wire 3 3 \shifter$do_shift_amt [2:0] $end
-$var wire 8 4 \shifter$do_shift_data [7:0] $end
-$var wire 8 5 \shifter$get_rsp [7:0] $end
-$var wire 1 6 \shifter$RDY_get_rsp $end
-$var wire 1 7 \shifter$RDY_do_shift $end
-$var reg 8 8 rg_x [7:0] $end
-$var reg 3 9 rg_y [2:0] $end
-$scope module shifter $end
+$var wire 1 * WILL_FIRE_RL_request_pipe $end
+$var wire 1 + WILL_FIRE_RL_response_pipe $end
+$var wire 1 , \basic_pipeline$EN_get_data $end
+$var wire 1 - \basic_pipeline$EN_put_data $end
+$var wire 1 . \counter$EN $end
+$var wire 8 / \data_in_tb$D_IN [7:0] $end
+$var wire 1 0 \data_in_tb$EN $end
+$var wire 8 1 \counter$D_IN [7:0] $end
+$var wire 8 2 \basic_pipeline$put_data_data_in [7:0] $end
+$var wire 1 3 \basic_pipeline$RDY_put_data $end
+$var wire 1 4 CAN_FIRE_RL_response_pipe $end
+$var reg 8 5 counter [7:0] $end
+$var reg 8 6 data_in_tb [7:0] $end
+$scope module basic_pipeline $end
+$var wire 1 7 CAN_FIRE_RL_rl_pipe $end
+$var wire 1 8 CAN_FIRE_get_data $end
 $var wire 1 ! CLK $end
-$var wire 1 1 EN_do_shift $end
-$var wire 1 2 EN_get_rsp $end
+$var wire 1 , EN_get_data $end
+$var wire 1 - EN_put_data $end
+$var wire 1 9 RDY_get_data $end
 $var wire 1 " RST_N $end
-$var wire 1 : WILL_FIRE_RL_rl_2 $end
-$var wire 1 ; WILL_FIRE_RL_rl_3 $end
-$var wire 1 < WILL_FIRE_do_shift $end
-$var wire 1 = WILL_FIRE_get_rsp $end
-$var wire 3 > do_shift_amt [2:0] $end
-$var wire 8 ? do_shift_data [7:0] $end
-$var wire 8 @ get_rsp [7:0] $end
-$var wire 3 A \reg_amt$D_IN [2:0] $end
-$var wire 1 B \reg_amt$EN $end
-$var wire 1 C \reg_data$EN $end
-$var wire 1 D \reg_state$EN $end
-$var wire 1 6 RDY_get_rsp $end
-$var wire 1 7 RDY_do_shift $end
-$var wire 8 E \MUX_reg_data$write_1__VAL_3 [7:0] $end
-$var wire 8 F \MUX_reg_data$write_1__VAL_2 [7:0] $end
-$var wire 8 G \MUX_reg_data$write_1__VAL_1 [7:0] $end
-$var wire 1 H CAN_FIRE_get_rsp $end
-$var wire 1 I CAN_FIRE_do_shift $end
-$var wire 1 J CAN_FIRE_RL_rl_3 $end
-$var wire 1 K CAN_FIRE_RL_rl_2 $end
-$var reg 3 L reg_amt [2:0] $end
-$var reg 8 M reg_data [7:0] $end
-$var reg 8 N \reg_data$D_IN [7:0] $end
-$var reg 2 O reg_state [1:0] $end
-$var reg 2 P \reg_state$D_IN [1:0] $end
+$var wire 1 : WILL_FIRE_RL_rl_pipe $end
+$var wire 1 ; WILL_FIRE_get_data $end
+$var wire 1 < WILL_FIRE_put_data $end
+$var wire 8 = \data_in_reg$D_IN [7:0] $end
+$var wire 1 > \data_in_reg$EN $end
+$var wire 1 ? \data_inserted$EN $end
+$var wire 8 @ \data_out_reg$D_IN [7:0] $end
+$var wire 1 A \data_out_reg$EN $end
+$var wire 1 B \data_ready$D_IN $end
+$var wire 1 C \data_ready$EN $end
+$var wire 8 D get_data [7:0] $end
+$var wire 8 E put_data_data_in [7:0] $end
+$var wire 1 F \data_inserted$D_IN $end
+$var wire 1 3 RDY_put_data $end
+$var wire 1 G CAN_FIRE_put_data $end
+$var reg 8 H data_in_reg [7:0] $end
+$var reg 1 I data_inserted $end
+$var reg 8 J data_out_reg [7:0] $end
+$var reg 1 K data_ready $end
 $upscope $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b11 P
-b10 O
-b10101010 N
-b10101010 M
-b10 L
 0K
-1J
+b10101010 J
 0I
-0H
-b10101000 G
-b10101010 F
-b10101010 E
-1D
-1C
+b10101010 H
+1G
+1F
+b1010100 E
+b10101010 D
+0C
 0B
-b10 A
+0A
 b10101010 @
-b10101010 ?
-b10 >
-0=
+0?
+0>
+b1010100 =
 0<
-1;
+0;
 0:
-b10 9
-b10101010 8
+09
+08
 07
-06
+b10101010 6
 b10101010 5
-b10101010 4
-b10 3
-02
-01
+04
+13
+b1010100 2
+b10101011 1
 00
 b0 /
 0.
-b0 -
+0-
 0,
 0+
 0*
@@ -122,33 +111,23 @@ b0 #
 x!
 $end
 #1
-b0 G
-1D
-b1 P
-b10110 N
-b0 F
-b10110 E
-1<
-1B
-11
-1,
+1?
 1*
-17
-1I
-0;
-0J
-b0 O
-b0 5
+1.
+1<
+1>
+1-
+1)
+b0 D
+b0 J
 b0 @
-b0 M
-b0 L
-b11 A
-b11 3
-b11 9
-b11 >
-b1011 4
-b1011 8
-b1011 ?
+b0 H
+b1010 6
+b11 1
+b1100 =
+b1100 2
+b1100 E
+b10 5
 1!
 b1 #
 #2
@@ -156,62 +135,399 @@ b1 #
 #5
 0!
 #10
-b1011000 G
-b10 P
-b1011000 N
-b10110 F
-0<
-0B
-01
-0,
 0*
-07
-0I
+0.
+0<
+0>
+0-
+0)
+1C
+b100 1
+b1101 =
+b1101 2
+b1101 E
+b11 5
+03
+0G
+0F
+1B
+1A
 1:
-1K
-b1 O
-b10110 5
-b10110 @
-b10110 M
-b11 L
+17
+1I
+b1100 @
+b1100 H
 1!
 #11
 b10 #
 #15
 0!
 #20
-b1100000 G
-b11 P
-b1011000 F
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+18
+19
+1K
+b1100 D
+b1100 J
+13
+1G
+1F
+0B
+0A
 0:
-0K
-1;
-1J
-b10 O
-b1011000 5
-b1011000 @
-b1011000 M
+07
+0I
 1!
 #21
 b11 #
 #25
 0!
 #30
-0C
-1D
-b0 P
-b10101010 N
-1=
-12
-1+
-1)
-16
-1H
-0;
-0J
-b11 O
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+b101 1
+b1110 =
+b1110 2
+b1110 E
+b100 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b1101 @
+b1101 H
 1!
 #31
 b100 #
 #35
+0!
+#40
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+b1101 D
+b1101 J
+13
+1G
+1F
+0B
+0A
+0:
+07
+0I
+1!
+#41
+b101 #
+#45
+0!
+#50
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+b110 1
+b1111 =
+b1111 2
+b1111 E
+b101 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b1110 @
+b1110 H
+1!
+#51
+b110 #
+#55
+0!
+#60
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+b1110 D
+b1110 J
+13
+1G
+1F
+0B
+0A
+0:
+07
+0I
+1!
+#61
+b111 #
+#65
+0!
+#70
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+b111 1
+b10000 =
+b10000 2
+b10000 E
+b110 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b1111 @
+b1111 H
+1!
+#71
+b1000 #
+#75
+0!
+#80
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+b1111 D
+b1111 J
+13
+1G
+1F
+0B
+0A
+0:
+07
+0I
+1!
+#81
+b1001 #
+#85
+0!
+#90
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+b1000 1
+b10001 =
+b10001 2
+b10001 E
+b111 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b10000 @
+b10000 H
+1!
+#91
+b1010 #
+#95
+0!
+#100
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+b10000 D
+b10000 J
+13
+1G
+1F
+0B
+0A
+0:
+07
+0I
+1!
+#101
+b1011 #
+#105
+0!
+#110
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+b1001 1
+b10010 =
+b10010 2
+b10010 E
+b1000 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b10001 @
+b10001 H
+1!
+#111
+b1100 #
+#115
+0!
+#120
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+b10001 D
+b10001 J
+13
+1G
+1F
+0B
+0A
+0:
+07
+0I
+1!
+#121
+b1101 #
+#125
+0!
+#130
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+b1010 1
+b10011 =
+b10011 2
+b10011 E
+b1001 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b10010 @
+b10010 H
+1!
+#131
+b1110 #
+#135
+0!
+#140
+1*
+1.
+1<
+1>
+1-
+1)
+0C
+1?
+b10010 D
+b10010 J
+13
+1G
+1F
+0B
+0A
+0:
+07
+0I
+1!
+#141
+b1111 #
+#145
+0!
+#150
+0*
+0.
+0<
+0>
+0-
+0)
+1C
+1+
+14
+b1011 1
+b10100 =
+b10100 2
+b10100 E
+b1010 5
+03
+0G
+0F
+1B
+1A
+1:
+17
+1I
+b10011 @
+b10011 H
+1!
+#151
+b10000 #
+#155
 0!

@@ -15,7 +15,7 @@
 # Please modify the following for your installation and setup
 
 # Directory for the specific example you are building
-EG ?= shifter
+EG ?= workspace/basic_pipeline
 
 # Directory containing the Bluespec Training distribution directory
 DISTRO ?= ..
@@ -33,7 +33,7 @@ VSIM ?= iverilog
 # ================================================================
 # You should not have to change anything below this line
 
-TOPFILE ?= $(DISTRO)/src/$(EG)/shifter_testbench.bsv
+TOPFILE ?= $(DISTRO)/src/$(EG)/basic_pipeline_Tb.bsv
 TOPMODULE ?= mkTestbench
 
 BSC_COMP_FLAGS = -elab -keep-fires -aggressive-conditions -no-warn-action-shadowing
