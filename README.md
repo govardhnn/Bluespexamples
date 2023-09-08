@@ -7,6 +7,8 @@ Bluespec Examples (Bluespexamples)
 
 ### Readings
 [BSV by example](http://csg.csail.mit.edu/6.175/resources/bsv_by_example.pdf) <br>
+[BSV Reference Guide](http://csg.csail.mit.edu/6.175/resources/bsv-reference-guide.pdf)
+[BSV User Guide](http://csg.csail.mit.edu/6.175/resources/bsv-user-guide.pdf)
 [Computer Architecture: A Constructive Approach](http://csg.csail.mit.edu/6.175/resources/archbook_2015-08-25.pdf)
 
 ### Lecture Series:
