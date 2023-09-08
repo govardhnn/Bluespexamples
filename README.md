@@ -8,3 +8,6 @@ Bluespec Examples (Bluespexamples)
 ### Readings
 [BSV by example](http://csg.csail.mit.edu/6.175/resources/bsv_by_example.pdf) <br>
 [Computer Architecture: A Constructive Approach](http://csg.csail.mit.edu/6.175/resources/archbook_2015-08-25.pdf)
+
+### Lecture Series:
+[Youtube: MIT 6.004 Computation Structures Fall 2018 - All Lectures](https://www.youtube.com/playlist?list=PLDSlqjcPpoL64CJdF0Qee5oWqGS6we_Yu)
