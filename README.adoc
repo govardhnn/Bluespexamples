@@ -19,5 +19,4 @@ Architecture: A Constructive Approach]
 
 === Lecture Series:
 
-https://www.youtube.com/playlist?list=PLDSlqjcPpoL64CJdF0Qee5oWqGS6we_Yu[Youtube:
-MIT 6.004 Computation Structures Fall 2018 - All Lectures]
+https://www.youtube.com/playlist?list=PLDSlqjcPpoL64CJdF0Qee5oWqGS6we_Yu[Youtube: MIT 6.004 Computation Structures Fall 2018 - All Lectures]
