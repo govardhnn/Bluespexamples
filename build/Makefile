@@ -15,10 +15,10 @@
 # Please modify the following for your installation and setup
 
 # Directory for the specific example you are building
-EG ?= workspace/basic_pipeline
+EG ?= sorter
 
 # Directory containing the Bluespec Training distribution directory
-DISTRO ?= ..
+DISTRO ?= /home/incore/Bluespexamples
 
 # Set this to the command that invokes your Verilog simulator
 # VSIM ?= iverilog
@@ -33,8 +33,8 @@ VSIM ?= iverilog
 # ================================================================
 # You should not have to change anything below this line
 
-TOPFILE ?= $(DISTRO)/src/$(EG)/basic_pipeline_Tb.bsv
-TOPMODULE ?= mkTestbench
+TOPFILE ?= $(DISTRO)/src/$(EG)/cae_tb.bsv
+TOPMODULE ?= mkCAE_Testbench
 
 BSC_COMP_FLAGS = -elab -keep-fires -aggressive-conditions -no-warn-action-shadowing
 BSC_LINK_FLAGS = -keep-fires
