@@ -15,14 +15,7 @@ module mkShifter(Shifter_IFC);
    Reg #( Bit #(2)) reg_state <- mkReg(0);
    Wire #( Bool) wr_fire <- mkDWire(False);
    
-   // mkReg initial value?
-   // mismatch bit width?
-   
-   //rule rl_1 ( wr_fire );
-  //    reg_data <= (reg_amt[0] == 1) ? reg_data << 1 : reg_data ;
-  //    reg_state <= 1;
-  // endrule
-   
+
    rule rl_2 ( reg_state == 1 );
       reg_data <= (reg_amt[1] == 1) ? reg_data << 2 : reg_data ;
       reg_state <= 2;

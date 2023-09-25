@@ -1,4 +1,5 @@
 package counter_Tb;
+
 (*synthesize*)
 module mkCount_TB(Empty);
 
@@ -19,7 +20,6 @@ module mkCount_TB(Empty);
    
 endmodule
 
-
 interface Ifc_Counter;
 
    method Action start_count (Bit#(32) initial_value);
@@ -29,7 +29,6 @@ endinterface
 
 
 (*synthesize*)
-
 module mkCounter(Ifc_Counter);
 
    Reg#(Bit#(32)) x <- mkReg(0);
