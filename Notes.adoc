@@ -1,0 +1,7 @@
+=== What is Bluespec System Verilog (BSV)
+Bluespec is a high level hardware design language, which offers a more efficient way to designing processors, memory subsystems, interconnect fabric, and accelerators. Apart from designing and verifying hardware IP, it also is used in
+
+* Architectural Modeling
+* Virtual Platforms
+* Validating Hardware Specifications
+

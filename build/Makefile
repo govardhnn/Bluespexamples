@@ -1,3 +1,5 @@
+include makefile.inc
+
 # ================================================================
 # Copyright (c) 2016 Bluespec, Inc.  All Rights Reserved.
 # This is an example Makefile for the examples in the standard
@@ -15,14 +17,14 @@
 # Please modify the following for your installation and setup
 
 # Directory for the specific example you are building
-EG ?= rigid_pipeline
+EG ?= $(EG_NAME)
 
 # Directory containing the Bluespec Training distribution directory
 DISTRO ?= /home/govardhan/github/Bluespexamples
 
 # Set this to the command that invokes your Verilog simulator
 # VSIM ?= iverilog
-VSIM ?= iverilog
+VSIM ?= $(SIM)
 # VSIM ?= cver
 # VSIM ?= vcsi
 # VSIM ?= vcs
@@ -33,8 +35,8 @@ VSIM ?= iverilog
 # ================================================================
 # You should not have to change anything below this line
 
-TOPFILE ?= $(DISTRO)/src/$(EG)/rigid_pipe_tb.bsv
-TOPMODULE ?= mk_rigid_pipe_tb
+TOPFILE ?= $(DISTRO)/src/$(EG)/$(TB_BSV).bsv
+TOPMODULE ?= $(TB_BSV_TOP)
 
 BSC_COMP_FLAGS = -elab -keep-fires -aggressive-conditions -no-warn-action-shadowing
 BSC_LINK_FLAGS = -keep-fires
