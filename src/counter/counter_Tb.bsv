@@ -1,5 +1,6 @@
 package counter_Tb;
 
+
 (*synthesize*)
 module mkCount_TB(Empty);
 

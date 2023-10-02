@@ -1,4 +1,4 @@
-EG_NAME:= rigid_pipeline
+EG_NAME:= multiplier
 SIM:=iverilog
-TB_BSV:=rigid_pipe_tb
-TB_BSV_TOP:=mk_rigid_pipe_tb
+TB_BSV:=simple_multiplier_testbench
+TB_BSV_TOP:=mk_simple_multiplier_testbench

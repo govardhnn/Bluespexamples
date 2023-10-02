@@ -1,26 +1,27 @@
 package shifter_testbench;
 
-//import Utils       :: *;
 import shifter     :: *;
 
-(* synthesize *)
-module mkTestbench (Empty);
+(*synthesize*)
+module mk_shifter_testbench(Empty);
 
-   Shifter_IFC  shifter <- mkShifter;
+   Ifc_shifter  shifter <- mkShifter;
 
-   Reg #(Bit #(8)) rg_x <- mkReg (11);
-   Reg #(Bit #(3)) rg_y <- mkReg (3);   
-      
+   // shifting 11 left by 3 (11 << 3) -> answer: 88 
+   Reg#(Bit#(8)) rg_x <- mkReg(11);
+   Reg#(Bit#(3)) rg_y <- mkReg(3);   
+   
    rule request;
-      shifter.do_shift (rg_x, rg_y);
+      shifter.ma_do_shift(rg_x, rg_y);
+      $display("-> Sending the values rg_x: %0d and rg_y :%0d", rg_x, rg_y);
    endrule
    
    rule finish_shift;
-      let rsp <- shifter.get_rsp ();
-      $display("%0d", rsp);
+      let rsp <- shifter.mav_get_rsp ();
+      $display("Got response at Testbench: %0d", rsp);
       $finish();
    endrule
    
-endmodule: mkTestbench
+endmodule: mk_shifter_testbench
 
 endpackage: shifter_testbench

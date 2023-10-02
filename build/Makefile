@@ -140,7 +140,7 @@ v_simulate:
 
 .PHONY: clean
 clean:
-	rm -f  build_bsim/*  build_v/*    *~
+	rm -f build_bsim/* build_v/* verilog_dir/* *~ *.vcd *_vsim  
 
 .PHONY: full_clean
 full_clean:

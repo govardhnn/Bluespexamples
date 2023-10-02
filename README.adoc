@@ -1,22 +1,53 @@
-== Bluespexamples
+= Bluespexamples
 
-Bluespec Examples (Bluespexamples) ## Resources: ### Courses
-http://csg.csail.mit.edu/6.175/index.html[6.175 - Constructive Computer
+Bluespec Examples (Bluespexamples)
+
+== Designs:
+
+- link:src/shifter[Shifter]
+- link:[]
+
+
+== Directory Structure
+
+```.
+├── Makefile		(Make html docs and view)
+├── NOTES.adoc 	      	(BSV notes)
+├── README.adoc		(This doc)
+├── build		(Build folder for all bsv projects)
+│   ├── Makefile	(Make verilog files and simulate)
+│   ├── makefile.inc	(Insert file names and path)
+│   └── verilog_dir/ 	(Verilog files compiled from src) 
+├── src/
+│   ├── Common/		(Common files)
+│   ├── <projects> 	(All Projects)
+│   └── workspace/	(Scratch worspace)
+└── waveforms/          (Contains all the simulation waveform screenshots)
+```
+== Resources:
+
+=== Courses
+
+* http://csg.csail.mit.edu/6.175/index.html[6.175 - Constructive Computer
 Architecture (Fall 2017)]
-http://csg.csail.mit.edu/6.S078/6_S078_2012_www/index.html[6.S078 -
+
+* http://csg.csail.mit.edu/6.S078/6_S078_2012_www/index.html[6.S078 -
 Computer Architecture: A Constructive Approach]
 
 === Readings
 
-http://csg.csail.mit.edu/6.175/resources/bsv_by_example.pdf[BSV by
+* http://csg.csail.mit.edu/6.175/resources/bsv_by_example.pdf[BSV by
 example]
-http://csg.csail.mit.edu/6.175/resources/bsv-reference-guide.pdf[BSV
+
+* http://csg.csail.mit.edu/6.175/resources/bsv-reference-guide.pdf[BSV
 Reference Guide]
-http://csg.csail.mit.edu/6.175/resources/bsv-user-guide.pdf[BSV User
+
+* http://csg.csail.mit.edu/6.175/resources/bsv-user-guide.pdf[BSV User
 Guide]
-http://csg.csail.mit.edu/6.175/resources/archbook_2015-08-25.pdf[Computer
+
+* http://csg.csail.mit.edu/6.175/resources/archbook_2015-08-25.pdf[Computer
 Architecture: A Constructive Approach]
 
 === Lecture Series:
 
-https://www.youtube.com/playlist?list=PLDSlqjcPpoL64CJdF0Qee5oWqGS6we_Yu[Youtube: MIT 6.004 Computation Structures Fall 2018 - All Lectures]
+* https://www.youtube.com/playlist?list=PLDSlqjcPpoL64CJdF0Qee5oWqGS6we_Yu[Youtube: MIT 6.004 Computation Structures Fall 2018 - All Lectures]
