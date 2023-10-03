@@ -2,4 +2,5 @@
 *.vcd
 *.v
 *.bo *.ba
+*_vsim
 backup
