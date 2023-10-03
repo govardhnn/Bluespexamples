@@ -2,28 +2,62 @@
 
 Bluespec Examples (Bluespexamples)
 
-== Designs:
+== Index
 
-- link:src/shifter[Shifter]
-- link:[]
-
-
+* link:src/multiplier[Multipier]
+* link:src/shifter[Shifter]
+* link:[]
+* link:[]
 == Directory Structure
 
 ```.
-├── Makefile		(Make html docs and view)
-├── NOTES.adoc 	      	(BSV notes)
-├── README.adoc		(This doc)
-├── build		(Build folder for all bsv projects)
-│   ├── Makefile	(Make verilog files and simulate)
+├── Makefile		    (Make html docs and view)
+├── NOTES.adoc 	        (BSV notes)
+├── README.adoc		    (This doc)
+├── build		        (Build folder for all bsv projects)
+│   ├── Makefile	    (Make verilog files and simulate)
 │   ├── makefile.inc	(Insert file names and path)
 │   └── verilog_dir/ 	(Verilog files compiled from src) 
 ├── src/
-│   ├── Common/		(Common files)
-│   ├── <projects> 	(All Projects)
-│   └── workspace/	(Scratch worspace)
+│   ├── Common/		    (Common files)
+|   ├── <Designs>       (Refer Index)
+│   └── workspace/	    (Scratch worspace)
 └── waveforms/          (Contains all the simulation waveform screenshots)
 ```
+
+=== Coding Guidelines
+*non exhaustive list - owrk in progress
+
+* No Camel Casing
+* package names starts with lowercase
+* use one module per package when possible
+
+[cols = "2,2"]
+|===
+|*Prefix* | *Meaning*
+| mk_ | module
+| Ifc_ | Interface
+| subifc_ | Sub Interface
+| ma_ | Method Action
+| mv_ | Method Value
+| mav_ | Method ActionValue
+| rg_ | register
+| wr_ | wire
+| ff_| fifo
+
+| rf_| register file
+| v_| vector
+
+|===
+
+
+
+
+
+
+
+
+
 == Resources:
 
 === Courses

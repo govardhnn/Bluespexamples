@@ -1,47 +1,49 @@
 package simple_multiplier;
 
-interface Ifc_simple_multiplier;
-    method Action ma_inputs (Bit#(32) in_a, Bit#(32) in_b);
-    method ActionValue #(Bit#(32)) mav_product(); 
+interface Ifc_multiplier;
+   method Action ma_do_multiply (Bit#(8) in_a, Bit#(8) in_b) ;
+   method ActionValue #(Bit#(8)) mav_get_rsp ();
 endinterface
 
-(*synthesize*)
-module mk_simple_multiplier(Ifc_simple_multiplier);
-    Reg#(Bit#(32)) rg_in_a <- mkReg(0);
-    Reg#(Bit#(32)) rg_in_b <- mkReg(0);
-    Reg#(Bit#(32)) rg_product <- mkReg(0);
-    Wire#(Bool) wr_mul_in <- mkDWire(False);
+(* synthesize *)
+module mk_simple_multiplier(Ifc_multiplier);
 
-    Wire#(Bool) wr_mul <- mkDWire(False);
-    Wire#(Bool) wr_mul_done <- mkDWire(False);
-    Reg#(Bool) rg_mul_done <- mkReg(False);
-    Reg#(Bool) rg_mul_send <- mkReg(False);
+   Reg#(Bit#(8)) rg_in_a <- mkReg(0);
+   Reg#(Bit#(8)) rg_in_b <- mkReg(0);
+ 
+   Reg#(Bit#(8)) rg_data <- mkReg(0); 
+   Reg#(Bit#(3)) rg_state <- mkReg(0); // goes from state 3'b0 to 3'b100
+   
+   rule r1_1 (rg_state == 1);
+      $display("3. -> multiplying rg_in_a with rg_in_b");
+      rg_data <= rg_in_a * rg_in_b;
+      rg_state <= 2;
+   endrule  
+   
+   rule rl_2 (rg_state == 2);
+      $display("4. -> multiplying rg_in_a with rg_in_b again * rg_data");
+      rg_data <= rg_in_a * rg_in_b * rg_data;
+      rg_state <= 3;
+   endrule
+   
+   rule rl_3 ( rg_state == 3 );
+      $display("5. -> multiplying rg_in_a with rg_in_b again * rg_data");
+      rg_data <= rg_in_a * rg_in_b * rg_data;
+      rg_state <= 4;
+   endrule
 
-    rule rl_multiply(rg_mul_done==True);
-        //(wr_mul == True);
-        $display("Entered the multiply section");
-        rg_product <= rg_in_a * rg_in_b;
-        $display("multiplication done");
-        rg_mul_done <= False;
-        rg_mul_send <= True;
-    endrule
+   method Action ma_do_multiply (Bit #(8) in_a, Bit #(8) in_b) if (rg_state == 0);
+      $display("2. -> Entered the design, \n loading values \n rg_in_a: %0d and \n rg_in_b: %0d", in_a, in_b);
+      rg_in_a <= in_a;
+      rg_in_b <= in_b;
+      rg_state <= 1;
+   endmethod
+   
+   method ActionValue#(Bit #(8)) mav_get_rsp () if (rg_state == 4);
+      rg_state <= 0;
+      return (rg_data);
+   endmethod 
 
-    method Action ma_inputs (Bit#(32) in_a, Bit#(32) in_b) if (wr_mul_in == False);
-        // if (wr_mul == False);
-        $display("-> Entered the design, \n-> loading values rg_in_a: %0d and rg_in_b: %0d", rg_in_a, rg_in_b);
-        rg_in_a <= in_a;
-        rg_in_b <= in_b;
-        rg_mul_done <= True;
-        //wr_mul <= True;
-        //wr_mul_in <= True;
-    endmethod
-        
-    method ActionValue #(Bit#(32)) mav_product() if (rg_mul_send == True);
-        // if (wr_mul_done == True);
-        //if (wr_mul_done == True);
-        $display("Entered the returning mav, sending rg_product:%0d", rg_product) ;
-        return(rg_product);
-    endmethod 
-endmodule: mk_simple_multiplier
+endmodule
 
-endpackage: simple_multiplier
+endpackage
