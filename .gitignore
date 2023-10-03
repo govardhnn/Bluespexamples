@@ -3,4 +3,5 @@
 *.v
 *.bo *.ba
 *_vsim
+build_v/
 backup
