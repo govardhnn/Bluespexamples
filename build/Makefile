@@ -41,69 +41,6 @@ TOPMODULE ?= $(TB_BSV_TOP)
 BSC_COMP_FLAGS = -elab -keep-fires -aggressive-conditions -no-warn-action-shadowing
 BSC_LINK_FLAGS = -keep-fires
 BSC_PATHS = -p $(DISTRO)/src/$(EG)/:$(DISTRO)/src/Common:%/Prelude:%/Libraries
-
-.PHONY: help
-help:
-	@echo "Current settings"
-	@echo "    BLUESPEC_LICENSE_FILE = " $(BLUESPEC_LICENSE_FILE)
-	@echo "    BLUESPEC_HOME         = " $(BLUESPEC_HOME)
-	@echo "    BLUESPECDIR           = " $(BLUESPECDIR)
-	@echo ""
-	@echo "    EG                    = " $(EG) " (redefine EG for another example)"
-	@echo ""
-	@echo "Targets for 'make':"
-	@echo "    help                Print this information"
-	@echo ""
-	@echo "    Bluesim:"
-	@echo "        compile         Compile for Bluesim"
-	@echo "        link            Link a Bluesim executable"
-	@echo "        simulate        Run the Bluesim simulation executable"
-	@echo "                            (generates VCD file; remove -V flag to suppress VCD gen)"
-	@echo "        all_bsim        Convenience for make compile link simulate"
-	@echo ""
-	@echo "    Verilog generation and Verilog sim:"
-	@echo "        verilog         Compile for Verilog (Verilog files generated in verilog_dir/)"
-	@echo "        v_link          Link a Verilog simulation executable"
-	@echo "                            (current simulator:" $(VSIM) " (redefine VSIM for other Verilog simulators)"
-	@echo "        v_simulate      Run the Verilog simulation executable"
-	@echo "        all_vsim        Convenience for make verilog v_link v_simulate"
-	@echo "                            (generates VCD file; remove +bscvcd flag to suppress VCD gen)"
-	@echo ""
-	@echo "    clean               Delete intermediate files in build_bsim/ and build_v/ dirs"
-	@echo "    full_clean          Delete all but this Makefile"
-
-# ----------------------------------------------------------------
-# Bluesim compile/link/simulate
-
-BSIM_DIRS = -simdir build_bsim -bdir build_bsim -info-dir build_bsim
-BSIM_EXE = $(TOPMODULE)_bsim
-
-.PHONY: all_bsim
-all_bsim: full_clean  compile  link    simulate
-
-build_bsim:
-	mkdir  build_bsim
-
-.PHONY: compile
-compile: build_bsim
-	@echo Compiling for Bluesim ...
-	bsc -u -sim $(BSIM_DIRS) $(BSC_COMP_FLAGS) $(BSC_PATHS) -g $(TOPMODULE)  $(TOPFILE) 
-	@echo Compiling for Bluesim finished
-
-.PHONY: link
-link:
-	@echo Linking for Bluesim ...
-	bsc -e $(TOPMODULE) -sim -o $(BSIM_EXE) $(BSIM_DIRS) $(BSC_LINK_FLAGS) $(BSC_PATHS) \
-		$(DISTRO)/src/Common/C_imports.c
-	@echo Linking for Bluesim finished
-
-.PHONY: simulate
-simulate:
-	@echo Bluesim simulation ...
-	./$(BSIM_EXE)  -V
-	@echo Bluesim simulation finished
-
-# ----------------------------------------------------------------
 # Verilog compile/link/sim
 
 V_DIRS = -vdir verilog_dir -bdir build_v -info-dir build_v
