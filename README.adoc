@@ -8,6 +8,8 @@ Bluespec Examples (Bluespexamples)
 * link:src/shifter[Shifter]
 * link:[]
 * link:[]
+
+
 == Directory Structure
 
 ```.
@@ -26,11 +28,9 @@ Bluespec Examples (Bluespexamples)
 ```
 
 === Coding Guidelines
-*non exhaustive list - owrk in progress
-
-* No Camel Casing
-* package names starts with lowercase
-* use one module per package when possible
+*non exhaustive list - work in progress
+* No Camel Casing 
+* package names starts with lowercase, use one module per package when possible
 
 [cols = "2,2"]
 |===
