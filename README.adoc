@@ -43,6 +43,7 @@ Bluespec Examples (Bluespexamples)
 | mav_ | Method ActionValue
 | rg_ | register
 | wr_ | wire
+| tpl_ | tuple
 | ff_| fifo
 
 | rf_| register file
