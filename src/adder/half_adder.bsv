@@ -33,9 +33,9 @@ rg_initialized <= True;
 endmethod
 
 method ActionValue #(Bit#(1)) mav_get_sum () if (rg_sum_done == True);
-$display("4. Entered the AV, sum is %0d", sum);
+//$display("4. Entered the AV, sum is %0d", sum);
 rg_initialized <= False;
-return(0);
+return(sum);
 endmethod
 
 endmodule: mk_half_adder

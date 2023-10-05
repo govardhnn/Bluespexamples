@@ -1,7 +1,0 @@
-echo "*.ba files are elablorate collateral of the -e flag"
-bsc -sim -e mkTb -o bsim 
-bsc -sim -e mkTb -o bsim mkTb.ba mkPipe.ba 
-./bsim
-
-# for clean
-rm -rf *.ba *.bo *.out *.h *.o *.cxx *.so
