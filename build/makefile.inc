@@ -1,4 +1,4 @@
 SIM:= iverilog
-EG_NAME:= sorter
-TB_BSV:= cae_tb
-TB_BSV_TOP:= mk_cae_tb
+EG_NAME:= adder
+TB_BSV:= half_adder_testbench
+TB_BSV_TOP:= mk_half_adder_testbench

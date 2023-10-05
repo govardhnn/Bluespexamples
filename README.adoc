@@ -4,11 +4,13 @@ Bluespec Examples (Bluespexamples)
 
 == Index
 
-* link:src/multiplier[Multipier]
-* link:src/shifter[Shifter]
-* link:[]
-* link:[]
+* Design wise examples: +
+link:src/multiplier[Multipier] +
+link:src/shifter[Shifter]
+link:[]
+link:[]
 
+* Topic wise examples
 
 == Directory Structure
 
@@ -38,6 +40,8 @@ Bluespec Examples (Bluespexamples)
 | mk_ | module
 | Ifc_ | Interface
 | subifc_ | Sub Interface
+| fn_ | Function
+| rl_ | rule
 | ma_ | Method Action
 | mv_ | Method Value
 | mav_ | Method ActionValue
