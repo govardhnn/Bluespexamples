@@ -5,9 +5,11 @@ Bluespec Examples (Bluespexamples)
 == Index
 
 * Design wise examples: +
-link:src/multiplier[Multipier] +
-link:src/shifter[Shifter]
-link:[]
+
+link:src/adder[Adder] - half adder, full adder, +
+link:src/multiplier[Multipier] - simple multiplier +
+link:src/shifter[Shifter] - shifter +
+link:src/sorter[Sorter] - CAE (Compare And Exchange) two input sorter  +
 link:[]
 
 * Topic wise examples

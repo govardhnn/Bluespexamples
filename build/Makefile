@@ -1,15 +1,15 @@
 include makefile.inc
 
 EG ?= $(EG_NAME)
-DISTRO ?= /home/govardhan/github/Bluespexamples
+FOLDER ?= /home/govardhan/github/Bluespexamples
 VSIM ?= $(SIM)
 
-TOPFILE ?= $(DISTRO)/src/$(EG)/$(TB_BSV).bsv
+TOPFILE ?= $(FOLDER)/src/$(EG)/$(TB_BSV).bsv
 TOPMODULE ?= $(TB_BSV_TOP)
 
 BSC_COMP_FLAGS = -elab -keep-fires -aggressive-conditions -no-warn-action-shadowing
 BSC_LINK_FLAGS = -keep-fires
-BSC_PATHS = -p $(DISTRO)/src/$(EG)/:$(DISTRO)/src/Common:%/Prelude:%/Libraries
+BSC_PATHS = -p $(FOLDER)/src/$(EG)/:$(FOLDER)/src/Common:%/Prelude:%/Libraries
 
 V_DIRS = -vdir verilog_dir -bdir build_v -info-dir build_v
 VSIM_EXE = $(TOPMODULE)_vsim
@@ -32,7 +32,7 @@ verilog: build_v verilog_dir
 .PHONY: v_link
 v_link: build_v verilog_dir
 	@echo Linking for Verilog sim ...
-	bsc -e $(TOPMODULE) -verilog -o ./$(VSIM_EXE) $(V_DIRS) -vsim $(VSIM) verilog_dir/$(TOPMODULE).v $(DISTRO)/src/Common/C_imports.c
+	bsc -e $(TOPMODULE) -verilog -o ./$(VSIM_EXE) $(V_DIRS) -vsim $(VSIM) verilog_dir/$(TOPMODULE).v $(FOLDER)/src/Common/C_imports.c
 	@echo Linking for Verilog sim finished
 
 .PHONY: v_simulate
