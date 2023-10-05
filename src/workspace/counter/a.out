@@ -1,0 +1,197 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x559a3ee9d370 .scope module, "mkCount_TB" "mkCount_TB" 2 29;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "CLK";
+    .port_info 1 /INPUT 1 "RST_N";
+o0x7facb1ab8018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x559a3eecc320_0 .net "CLK", 0 0, o0x7facb1ab8018;  0 drivers
+o0x7facb1ab8108 .functor BUFZ 1, C4<z>; HiZ drive
+v0x559a3eecc3e0_0 .net "RST_N", 0 0, o0x7facb1ab8108;  0 drivers
+L_0x7facb1a6f258 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecc480_0 .net "count$EN_counter_value", 0 0, L_0x7facb1a6f258;  1 drivers
+L_0x7facb1a6f210 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecc520_0 .net "count$EN_start_count", 0 0, L_0x7facb1a6f210;  1 drivers
+v0x559a3eecc5c0_0 .net "count$counter_value", 31 0, L_0x559a3ee9e250;  1 drivers
+v0x559a3eecc660_0 .net "count$start_count_initial_value", 31 0, v0x559a3eecc730_0;  1 drivers
+v0x559a3eecc730_0 .var "initial_value", 31 0;
+L_0x7facb1a6f180 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecc7d0_0 .net "initial_value$D_IN", 31 0, L_0x7facb1a6f180;  1 drivers
+L_0x7facb1a6f1c8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecc870_0 .net "initial_value$EN", 0 0, L_0x7facb1a6f1c8;  1 drivers
+S_0x559a3ee6ecf0 .scope module, "count" "mkCounter" 2 44, 3 35 0, S_0x559a3ee9d370;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "CLK";
+    .port_info 1 /INPUT 1 "RST_N";
+    .port_info 2 /INPUT 32 "start_count_initial_value";
+    .port_info 3 /INPUT 1 "EN_start_count";
+    .port_info 4 /OUTPUT 1 "RDY_start_count";
+    .port_info 5 /INPUT 1 "EN_counter_value";
+    .port_info 6 /OUTPUT 32 "counter_value";
+    .port_info 7 /OUTPUT 1 "RDY_counter_value";
+L_0x559a3ee9e250 .functor BUFZ 32, v0x559a3eecbe00_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_0x559a3ee9ed40 .functor AND 1, L_0x559a3eedcce0, v0x559a3eecbae0_0, C4<1>, C4<1>;
+L_0x559a3eeccac0 .functor BUFZ 1, L_0x7facb1a6f210, C4<0>, C4<0>, C4<0>;
+L_0x559a3eeccbb0 .functor OR 1, L_0x7facb1a6f210, L_0x559a3ee9ed40, C4<0>, C4<0>;
+L_0x559a3eedd100 .functor BUFT 32, v0x559a3eecc730_0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x559a3ee9e370_0 .net "CLK", 0 0, o0x7facb1ab8018;  alias, 0 drivers
+v0x559a3ee9f260_0 .net "EN_counter_value", 0 0, L_0x7facb1a6f258;  alias, 1 drivers
+v0x559a3ee97f20_0 .net "EN_start_count", 0 0, L_0x7facb1a6f210;  alias, 1 drivers
+L_0x7facb1a6f060 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecb4f0_0 .net "RDY_counter_value", 0 0, L_0x7facb1a6f060;  1 drivers
+L_0x7facb1a6f018 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecb5b0_0 .net "RDY_start_count", 0 0, L_0x7facb1a6f018;  1 drivers
+v0x559a3eecb6c0_0 .net "RST_N", 0 0, o0x7facb1ab8108;  alias, 0 drivers
+v0x559a3eecb780_0 .net "WILL_FIRE_RL_count_up", 0 0, L_0x559a3ee9ed40;  1 drivers
+L_0x7facb1a6f0f0 .functor BUFT 1, C4<00000000000000000000000000011110>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecb840_0 .net/2u *"_ivl_16", 31 0, L_0x7facb1a6f0f0;  1 drivers
+L_0x7facb1a6f138 .functor BUFT 1, C4<00000000000000000000000000000001>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecb920_0 .net/2u *"_ivl_20", 31 0, L_0x7facb1a6f138;  1 drivers
+v0x559a3eecba00_0 .net "counter_value", 31 0, L_0x559a3ee9e250;  alias, 1 drivers
+v0x559a3eecbae0_0 .var "start", 0 0;
+L_0x7facb1a6f0a8 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v0x559a3eecbba0_0 .net "start$D_IN", 0 0, L_0x7facb1a6f0a8;  1 drivers
+v0x559a3eecbc60_0 .net "start$EN", 0 0, L_0x559a3eeccac0;  1 drivers
+v0x559a3eecbd20_0 .net "start_count_initial_value", 31 0, v0x559a3eecc730_0;  alias, 1 drivers
+v0x559a3eecbe00_0 .var "x", 31 0;
+v0x559a3eecbee0_0 .net "x$D_IN", 31 0, L_0x559a3eedd100;  1 drivers
+v0x559a3eecbfc0_0 .net "x$EN", 0 0, L_0x559a3eeccbb0;  1 drivers
+v0x559a3eecc080_0 .net "x_ULT_30___d2", 0 0, L_0x559a3eedcce0;  1 drivers
+v0x559a3eecc140_0 .net "y__h125", 31 0, L_0x559a3eedcec0;  1 drivers
+E_0x559a3eeb0180 .event negedge, v0x559a3ee9e370_0;
+E_0x559a3ee92a50 .event posedge, v0x559a3ee9e370_0;
+L_0x559a3eedcce0 .cmp/gt 32, L_0x7facb1a6f0f0, v0x559a3eecbe00_0;
+L_0x559a3eedcec0 .arith/sum 32, v0x559a3eecbe00_0, L_0x7facb1a6f138;
+    .scope S_0x559a3ee6ecf0;
+T_0 ;
+    %wait E_0x559a3ee92a50;
+    %load/vec4 v0x559a3eecb6c0_0;
+    %cmpi/e 0, 0, 1;
+    %jmp/0xz  T_0.0, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x559a3eecbae0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v0x559a3eecbe00_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0x559a3eecbc60_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.2, 8;
+    %load/vec4 v0x559a3eecbba0_0;
+    %assign/vec4 v0x559a3eecbae0_0, 0;
+T_0.2 ;
+    %load/vec4 v0x559a3eecbfc0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.4, 8;
+    %load/vec4 v0x559a3eecbee0_0;
+    %assign/vec4 v0x559a3eecbe00_0, 0;
+T_0.4 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x559a3ee6ecf0;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x559a3eecbae0_0, 0, 1;
+    %pushi/vec4 2863311530, 0, 32;
+    %store/vec4 v0x559a3eecbe00_0, 0, 32;
+    %end;
+    .thread T_1;
+    .scope S_0x559a3ee6ecf0;
+T_2 ;
+    %wait E_0x559a3eeb0180;
+    %delay 0, 0;
+    %load/vec4 v0x559a3eecb6c0_0;
+    %cmpi/ne 0, 0, 1;
+    %jmp/0xz  T_2.0, 4;
+    %load/vec4 v0x559a3ee9f260_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.2, 8;
+    %vpi_call 3 134 "$display", "counter value: %0d from design", v0x559a3eecbe00_0 {0 0 0};
+T_2.2 ;
+T_2.0 ;
+    %load/vec4 v0x559a3eecb6c0_0;
+    %cmpi/ne 0, 0, 1;
+    %jmp/0xz  T_2.4, 4;
+    %load/vec4 v0x559a3eecb780_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.6, 8;
+    %vpi_call 3 136 "$display", "x = %0d, y = %0d", v0x559a3eecbe00_0, v0x559a3eecc140_0 {0 0 0};
+T_2.6 ;
+T_2.4 ;
+    %load/vec4 v0x559a3eecb6c0_0;
+    %cmpi/ne 0, 0, 1;
+    %jmp/0xz  T_2.8, 4;
+    %load/vec4 v0x559a3eecc080_0;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.10, 8;
+    %vpi_call 3 138 "$display", "counting has finished at: %0d", v0x559a3eecbe00_0 {0 0 0};
+T_2.10 ;
+T_2.8 ;
+    %load/vec4 v0x559a3eecb6c0_0;
+    %cmpi/ne 0, 0, 1;
+    %jmp/0xz  T_2.12, 4;
+    %load/vec4 v0x559a3eecc080_0;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.14, 8;
+    %vpi_call 3 139 "$finish", 32'b00000000000000000000000000000000 {0 0 0};
+T_2.14 ;
+T_2.12 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x559a3ee9d370;
+T_3 ;
+    %wait E_0x559a3ee92a50;
+    %load/vec4 v0x559a3eecc3e0_0;
+    %cmpi/e 0, 0, 1;
+    %jmp/0xz  T_3.0, 4;
+    %pushi/vec4 10, 0, 32;
+    %assign/vec4 v0x559a3eecc730_0, 0;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/vec4 v0x559a3eecc870_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_3.2, 8;
+    %load/vec4 v0x559a3eecc7d0_0;
+    %assign/vec4 v0x559a3eecc730_0, 0;
+T_3.2 ;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x559a3ee9d370;
+T_4 ;
+    %pushi/vec4 2863311530, 0, 32;
+    %store/vec4 v0x559a3eecc730_0, 0, 32;
+    %end;
+    .thread T_4;
+    .scope S_0x559a3ee9d370;
+T_5 ;
+    %wait E_0x559a3eeb0180;
+    %delay 0, 0;
+    %load/vec4 v0x559a3eecc3e0_0;
+    %cmpi/ne 0, 0, 1;
+    %jmp/0xz  T_5.0, 4;
+    %vpi_call 2 94 "$display", "counter value: %0d from testbench", v0x559a3eecc5c0_0 {0 0 0};
+T_5.0 ;
+    %load/vec4 v0x559a3eecc3e0_0;
+    %cmpi/ne 0, 0, 1;
+    %jmp/0xz  T_5.2, 4;
+    %vpi_call 2 96 "$display", "counting has started, initial value: %0d", v0x559a3eecc730_0 {0 0 0};
+T_5.2 ;
+    %jmp T_5;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "mkCount_TB.v";
+    "mkCounter.v";

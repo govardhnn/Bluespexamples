@@ -5,3 +5,8 @@
 *_vsim
 build_v/
 backup
+*.cxx
+*.h
+*.o
+*.cmd*
+*.so
