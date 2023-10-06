@@ -31,6 +31,7 @@ module mk_full_adder (Ifc_fadder);
 
 half_adder ha_1 <- mk_half_adder(0, 0);
 
+// WORK IN PROGRESS
 
 endmodule: mk_full_adder
 
