@@ -1,4 +1,4 @@
 SIM:= iverilog
-EG_NAME:= counter
-TB_BSV:= counter_Tb
-TB_BSV_TOP:= mk_counter_Tb
+EG_NAME:= adder
+TB_BSV:= adder_tree_testbench
+TB_BSV_TOP:= mk_adder_tree_testbench

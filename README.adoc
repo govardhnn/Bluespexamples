@@ -4,15 +4,18 @@ Bluespec Examples (Bluespexamples)
 
 == Index
 
+** work in progress
+
 * Design wise examples: +
 
- - link:src/adder[Adder] - half adder, full adder, adder tree+
- - link:src/multiplier[Multipier] - simple multiplier , MAC - 2 input +
+ - link:src/adder[Adder] - half adder, full adder, adder tree**
+ - link:src/multiplier[Multipier] - simple multiplier , MAC - 2 input** +
  - link:src/shifter[Shifter] - shifter +
  - link:src/sorter[Sorter] - CAE (Compare And Exchange) two input sorter  +
  - link:[]
 
 * Topic wise examples
+
  - FIFO
  - Get Put
  - Client Server
