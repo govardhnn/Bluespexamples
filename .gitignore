@@ -10,3 +10,4 @@ backup
 *.o
 *.cmd*
 *.so
+src/mini_project
