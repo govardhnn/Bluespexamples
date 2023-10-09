@@ -1,7 +1,8 @@
 package full_adder;
 
 interface Ifc_fadder;
-
+   method Action ma_put_data_fa (Bit#(1) a, Bit#(1) b);
+   method ActionValue#(Tuple2#(Bit#(1), Bit#(1))) mav_get_sum_fa ();
 endinterface
 
 import half_adder :: * ;
@@ -29,9 +30,13 @@ Carry_out = Carry_1 + Carry_2 = (A*B) + (A^B)*Carry_in
 (*synthesize*)
 module mk_full_adder (Ifc_fadder);
 
-half_adder ha_1 <- mk_half_adder(0, 0);
+Ifc_hadder ha_1 <- mk_half_adder;
+
 
 // WORK IN PROGRESS
+
+   method Action ma_put_data_fa (Bit#(1) a, Bit#(1) b);
+   method ActionValue#(Tuple2#(Bit#(1), Bit#(1))) mav_get_sum_fa ();
 
 endmodule: mk_full_adder
 
