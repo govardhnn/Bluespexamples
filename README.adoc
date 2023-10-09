@@ -12,7 +12,6 @@ Bluespec Examples (Bluespexamples)
  - link:src/multiplier[Multipier] - simple multiplier , MAC - 2 input** +
  - link:src/shifter[Shifter] - shifter +
  - link:src/sorter[Sorter] - CAE (Compare And Exchange) two input sorter  +
- - link:[]
 
 * Topic wise examples
 
@@ -38,9 +37,8 @@ Bluespec Examples (Bluespexamples)
 ```
 
 === Coding Guidelines
+
 *non exhaustive list - work in progress
-* No Camel Casing 
-* package names starts with lowercase, use one module per package when possible
 
 [cols = "2,2"]
 |===
@@ -62,14 +60,6 @@ Bluespec Examples (Bluespexamples)
 | v_| vector
 
 |===
-
-
-
-
-
-
-
-
 
 == Resources:
 
