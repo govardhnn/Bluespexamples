@@ -22,6 +22,7 @@ inputs: Sum of First Half Adder and Carry_in
 outputs: Sum_2 (A^B^Carry_in), Carry_2((A^B)*Carry_in)
 
 Carry_out = Carry_1 + Carry_2 = (A*B) + (A^B)*Carry_in
+
 */
 
 (*synthesize*)
@@ -57,7 +58,7 @@ module mk_full_adder (Ifc_fadder);
       let lv_ha_2_output <- ha_2.mav_get_sum();
       $display("4. Got values sum_2: %0d and carry_2: %0d from half adder 2", tpl_1(lv_ha_2_output), tpl_2(lv_ha_2_output));
        rg_sum <= tpl_1(lv_ha_2_output);
-       $display("5. Perforiming OR operation with the rg_carry_1: %0d and carry of the 2nd half adder: %0d",rg_carry_1, tpl_2(lv_ha_2_output) );
+       $display("5. Perforiming OR operation with the rg_carry_1: %0d and carry of the half adder: %0d",rg_carry_1, tpl_2(lv_ha_2_output) );
       rg_carry_out <= rg_carry_1 + tpl_2(lv_ha_2_output);
       rg_sum_2_done <= True;
    endrule

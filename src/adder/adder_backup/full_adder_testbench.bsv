@@ -25,7 +25,7 @@ module mk_full_adder_testbench(Empty);
       //(rg_a, rg_b);
       rg_got_sum <= tpl_1(rg_got_data);
       rg_got_carry_out <= tpl_2(rg_got_data);
-      $display("7. TB got values final sum: %0d and final carry: %0d", tpl_1(rg_got_data), tpl_2(rg_got_data));
+      $display("7. TB got values sum: %0d and carry: %0d", tpl_1(rg_got_data), tpl_2(rg_got_data));
       $finish;
    endrule
 
