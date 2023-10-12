@@ -19,7 +19,7 @@ module mk_counter_Tb(Empty);
 
   rule rl_finish;
       let lv_rsp <- count.mav_done();
-      $display("5. Got response at Testbench: %0d", lv_rsp);
+      $display("4. Got response at Testbench: %b", lv_rsp);
       $finish();
    endrule
 endmodule: mk_counter_Tb
