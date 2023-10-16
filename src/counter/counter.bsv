@@ -30,7 +30,7 @@ method Action ma_start_count (Bit#(32) count_limit) if (rg_count_tick == False &
 endmethod
 
 method ActionValue#(Bool) mav_done () if (rg_count_lim_reached == True);
-$display("4. rg_count_val has reached %0d", rg_count_upto);
+//$display("4. rg_count_val has reached %0d", rg_count_upto);
 rg_count_tick <= False;
 return(True);
 
