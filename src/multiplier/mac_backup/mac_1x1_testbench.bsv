@@ -2,7 +2,7 @@ package mac_1x1_testbench;
 
 import mac_1x1 :: *;
 
-(* synthesize *)
+(*synthesize*)
 
 module mk_mac_1x1_testbench(Empty);
 
