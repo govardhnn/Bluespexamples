@@ -26,15 +26,15 @@ rg_M00 <= (rg_i * rg_j) + (rg_M00);
 rg_mac_done <= True;
 endrule
 
-method Action put_data (int i, int j) if (rg_initialized == False);
-$display("2. MAC got i and j values: %0d, %0d", i, j);
+method Action put_data (int i, int j) if (rg_initialized == False && rg_mac_done == False);
+$display(" -- (in mac 1x1) -- 2. MAC got i and j values: %0d, %0d", i, j);
 rg_i <= i;
 rg_j <= j;
 rg_initialized <= True;
 endmethod
 
 method ActionValue#(Tuple2#(int, int )) get_data if (rg_initialized && rg_mac_done);
-$display("3. MAC has %0d", rg_M00);
+$display("-- (in mac 1x1) -- 3. MAC has %0d", rg_M00);
 rg_initialized <= False;
 rg_mac_done <= False;
 return(tuple2(rg_i, rg_j));
