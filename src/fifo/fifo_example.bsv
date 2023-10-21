@@ -11,6 +11,7 @@ endinterface
 
 module mk_fifo_example(Ifc_fifo_example);
 
+    FIFO#(Int) fifo_1 <- mkFIFO;
 
 method Action put_data(Int a, Int b);
 endmethod
