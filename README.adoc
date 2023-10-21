@@ -5,11 +5,14 @@ Bluespec Examples (Bluespexamples)
 == Index
 
 **work in progress
+issues:
+    - Make MAC circuit take 1 cycle instead of 2
+    
 
 * Design wise examples: +
 
  - link:src/adder[Adder] - half adder, full adder (using half adders), adder tree +
- - link:src/multiplier[Multipier] - simple multiplier , MAC - 2 input** +
+ - link:src/multiplier[Multipier] - simple multiplier , MAC - 2 input +
  - link:src/shifter[Shifter] +
  - link:src/counter[Counter] +
  - link:src/sorter[Sorter] - 2 Input CAE (Compare And Exchange), 4 Input CAE ** +
