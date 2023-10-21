@@ -2,7 +2,7 @@ package cae_testbench;
 
 import cae :: *;
 
-//(* synthesize *)
+(* synthesize *)
 module mk_cae_testbench (Empty);
 
    Ifc_cae cae_inst <- mk_cae();
