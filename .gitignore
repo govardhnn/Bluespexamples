@@ -4,6 +4,7 @@
 *_vsim
 build_v/
 backup
+build/verilog_dir
 *.cxx
 *.h
 *.o
