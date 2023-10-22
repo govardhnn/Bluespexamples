@@ -18,18 +18,19 @@ module mk_mac_2x2_testbench(Empty);
       $display("1 TB side: Sending Values %0d, %0d, %0d, %0d", rg_tb_input_1, rg_tb_input_2, rg_tb_input_3, rg_tb_input_4);
 
       mac2x2.ma_put_data(rg_tb_input_1 ,rg_tb_input_2, rg_tb_input_3, rg_tb_input_4);
+   endrule
+
+   rule rl_get_data;
+      let lv_val <- mac2x2.mav_get_data();
+      $display("2 TB side: got back values: %0d, %0d, %0d, %0d",tpl_1(lv_val), tpl_2(lv_val), tpl_3(lv_val), tpl_4(lv_val) );
       rg_counter <= rg_counter + 1;
       rg_tb_input_1 <= rg_tb_input_1 << 1;
       rg_tb_input_2 <= rg_tb_input_2 << 1;
         rg_tb_input_3 <= rg_tb_input_3 << 1;
         rg_tb_input_4 <= rg_tb_input_4 << 1;
-   endrule
-
-   rule rl_get_data;
-      let lv_val <- mac2x2.mav_get_data();
-      $display("==========(new matrix)============");
-      $display("2 TB side: got next values: %0d, %0d, %0d, %0d",tpl_1(lv_val), tpl_2(lv_val), tpl_3(lv_val), tpl_4(lv_val) );
       if (rg_counter == 5) $finish;
+      else $display("====================(new matrix)====================");
+
    endrule
 
 endmodule

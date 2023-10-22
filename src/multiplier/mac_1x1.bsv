@@ -25,9 +25,10 @@ module mk_mac_1x1(Ifc_mac_1x1);
       rg_mac_done <= True;
    endmethod
 
-
    method ActionValue#(Tuple2#(int, int )) get_data if (rg_mac_done);
-      $display(" -- (in mac 1x1) -- 3. MAC has %0d", rg_M00);
+      $display(" -- (in mac 1x1) -- 3. **** MAC containts %0d ****", rg_M00);
+      $display(" -- (in mac 1x1) -- 4. MAC forwards %0d and %0d", rg_i_next, rg_j_next);
+
       rg_mac_done <= False;
       return(tuple2(rg_i_next, rg_j_next));
    endmethod
