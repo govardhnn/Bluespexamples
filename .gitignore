@@ -1,6 +1,5 @@
 *.html
 *.vcd
-*.v
 *.bo *.ba
 *_vsim
 build_v/

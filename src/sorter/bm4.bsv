@@ -7,6 +7,7 @@ interface Ifc_bm4;
    method ActionValue#(Tuple4#(int, int, int, int)) mav_return_output (); 
 endinterface
 
+(*synthesize*)
 module mk_bm4(Ifc_bm4);
 
    Ifc_cae cae1 <- mk_cae();

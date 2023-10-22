@@ -2,6 +2,7 @@ package bm4_testbench;
 
 import bm4 :: *;
 
+(*synthesize*)
 module mk_bm4_testbench(Empty);
 
     Reg#(int) rg_in_1 <- mkReg(4);
