@@ -4,24 +4,29 @@ Bluespec Examples (Bluespexamples)
 
 == Index
 
-**work in progress
-issues:
-    - Make MAC circuit take 1 cycle instead of 2
-    
+Design wise examples:
+|===
+| Design | Description
+| link:src/adder[Adder] | link:src/adder/half_adder.bsv[half adder] + 
+link:src/adder/full_adder.bsv[full adder] using two half adders and OR +
+link:srv/adder/adder_tree.bsv[adder tree] 
+| link:src/multiplier/[Multiplier] | link:src/multiplier/simple_multipler.bsv[simple multiplier] +
+link:src/multiplier/mac_1x1.bsv[mac_1x1] +
+link:src/multiplier/mac_2x2.bsv[mac_2x2] using four mac_1x1 +
+| link:src/counter[Counter] | link:src/counter/counter.bsv[counter]
+| link:src/shifter[Shifter] | link:src/shifter/shifter.bsv[shifter] 
+| link:src/sorter[Sorter] | link:src/sorter/cae.bsv[cae] +
+link:src/sorter/bm4.bsv[bm4] using six cae blocks 
+|===
 
-* Design wise examples: +
+Topic wise examples:
 
- - link:src/adder[Adder] - half adder, full adder (using half adders), adder tree +
- - link:src/multiplier[Multipier] - simple multiplier , MAC - 2 input +
- - link:src/shifter[Shifter] +
- - link:src/counter[Counter] +
- - link:src/sorter[Sorter] - 2 Input CAE (Compare And Exchange), 4 Input CAE ** +
-
-* Topic wise examples
-
- - FIFO
- - Get Put
- - Client Server
+|===
+| Design | Description +
+| FIFO |
+| Get Put |
+| Client Server |
+|===
 
 == Directory Structure
 
@@ -42,9 +47,6 @@ issues:
 
 === Coding Guidelines
 
-*non exhaustive list - work in progress
-
-[cols = "2,2"]
 |===
 |*Prefix* | *Meaning*
 | mk_ | module
@@ -60,15 +62,13 @@ issues:
 | tpl_ | tuple
 | ff_| fifo
 
-| rf_| register file
-| v_| vector
-
 |===
 
 == Resources:
 
 === Courses
 
+* link:http://csg.csail.mit.edu/6.375/6_375_2016_www/handouts.html[6.375 - Complex Digital Systems]
 * http://csg.csail.mit.edu/6.175/index.html[6.175 - Constructive Computer
 Architecture (Fall 2017)]
 
