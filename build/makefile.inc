@@ -1,4 +1,4 @@
 SIM:= iverilog
-EG_NAME:= multiplier
-TB_BSV:= mac_2x2_testbench
-TB_BSV_TOP:= mk_mac_2x2_testbench
+EG_NAME:= fifo
+TB_BSV:= fifo_example_testbench
+TB_BSV_TOP:= mk_fifo_example_testbench
