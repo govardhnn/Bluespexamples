@@ -13,8 +13,8 @@ Reg#(int) rg_input_2 <- mkReg(3);
 Reg#(int) rg_counter <- mkReg(0);
 
 rule rl_1 (rg_counter < 20);
+    $display("rg_input_1 = %d, rg_input_2 = %d", rg_input_1, rg_input_2);
 fifo_inst.put_data(rg_input_1, rg_input_2);
-if (rg_counter == 20 ) $finish;
 endrule
 
 rule rl_2;
@@ -24,8 +24,11 @@ rule rl_2;
 
     let lv_data <- fifo_inst.get_data();
     $display("lv_data = %d", tpl_1(lv_data), tpl_2(lv_data));
-    if (rg_counter == 20 ) $finish;
-
+    
+    if (rg_counter == 20 ) begin 
+    $display("counter has reached 20");
+    $finish;
+    end
 endrule
 endmodule
 
