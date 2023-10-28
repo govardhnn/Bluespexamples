@@ -6,22 +6,28 @@ import counter :: *;
 module mk_counter_Tb(Empty);
 
    Ifc_counter count <- mk_counter;
-   Reg#(Bit#(32)) rg_count_limit <- mkReg(20);
-   Reg#(Bool) rg_init <- mkReg(False);
    
-   rule rl_start_count(rg_init == False);
-      $display("1. Starting count, sending the count limit value from TB: %0d ", rg_count_limit);
-      count.ma_start_count(rg_count_limit);
-      // take a register here that sends a signal to the design, wheich makes the TB wait for the new count value to be sent to the design. Make sure that the value is the count_mav done, which will then restart with maybe a newer count value, this time lets say, 5 lesser? good problem statement
-     // rg_init <= True;
+   Reg#(int) rg_counter_tb <- mkReg(0);
+
+   rule rl_start_count(rg_counter_tb < 10);
+      $display("TB: count up");
+      count.ma_start(True);
+      rg_counter_tb <= rg_counter_tb + 1;
    endrule
 
-
-  rule rl_finish;
-      let lv_rsp <- count.mav_done();
-      $display("4. Got response at Testbench: %b", lv_rsp);
-      $finish();
+   rule rl_decrement(rg_counter_tb >= 10 && rg_counter_tb < 15);
+      $display("TB:           count down");
+      count.ma_start(False);
+      rg_counter_tb <= rg_counter_tb + 1;
    endrule
+
+   rule rl_finish(rg_counter_tb  == 15);
+      $display("TB:                    done");
+      let lv_returned = count.ma_stop();
+      rg_counter_tb <= 0;
+      $finish;
+   endrule
+
 endmodule: mk_counter_Tb
 
 

@@ -1,41 +1,31 @@
 package counter;
 
+/*
+changelog:
+1. making a basic counter
+2. making it an up-down counter with simplified interfaces
+
+*/
 interface Ifc_counter;
-   method Action ma_start_count (Bit#(32) count_limit);
-   method ActionValue#(Bool) mav_done (); 
+   method Action ma_start(Bool count_up);
+   method int ma_stop ();
 endinterface
 
 (*synthesize*)
 module mk_counter(Ifc_counter);
 
-Reg#(Bit#(32)) rg_count_upto <- mkReg(0);
-Reg#(Bit#(32)) rg_count_val <- mkReg(0);
-Reg#(Bool) rg_count_tick <- mkReg(False);
-Reg#(Bool) rg_count_lim_reached <- mkReg(False);
+   Reg#(int) rg_count <- mkReg(0);
 
-rule rl_count(rg_count_lim_reached == False && rg_count_tick == True);
+   method Action ma_start(Bool count_up);
+      $display("counting is up? %0d", count_up);
+      $display("value in reg is: %0d", rg_count);
+      if (count_up == True)   rg_count <= rg_count + 1;
+      else rg_count <= rg_count - 1;
+   endmethod
 
-   $display("3. Current count value: %0d", rg_count_val);
-   rg_count_val <= rg_count_val + 1;
-   rg_count_tick <= False;
-   if (rg_count_val == rg_count_upto) begin
-      rg_count_lim_reached <= True;
-   end
-endrule
-
-method Action ma_start_count (Bit#(32) count_limit) if (rg_count_tick == False && rg_count_lim_reached == False);
-   rg_count_upto <= count_limit;
-   $display("2. Count limit value: %0d", count_limit);
-   rg_count_tick <= True;   
-endmethod
-
-method ActionValue#(Bool) mav_done () if (rg_count_lim_reached == True);
-//$display("4. rg_count_val has reached %0d", rg_count_upto);
-rg_count_tick <= False;
-return(True);
-
-
-endmethod 
+   method int ma_stop ();
+      return(rg_count);
+   endmethod
 
 endmodule: mk_counter
 
