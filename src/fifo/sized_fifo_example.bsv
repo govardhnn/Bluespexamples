@@ -20,10 +20,21 @@ module mk_sized_fifo_example(Ifc_sized_fifo_example);
     Reg#(int) rg_a <- mkReg(0);
     Reg#(int) rg_b <- mkReg(0);
 
+    /* try the alternate preempts to check the scheduling working */
+    //(* preempts = "rl_1, rl_1_conf" *)
+    (* preempts = "rl_1_conf, rl_1" *)
+
 rule rl_1 (rg_depth == 2'b1 && !rg_done);
     $display("3. sized fifo enqueues values %0d and %0d to depth 2", rg_a, rg_b);
     fifo_1.enq(rg_a + 2);
     fifo_2.enq(rg_b + 2);
+    rg_depth <= 2'b11;
+endrule
+
+rule rl_1_conf (rg_depth == 2'b1 && !rg_done);
+    $display("3. sized fifo enqueues values %0d and %0d to depth 2", rg_a, rg_b);
+    fifo_1.enq(rg_a);
+    fifo_2.enq(rg_b);
     rg_depth <= 2'b11;
 endrule
 
@@ -33,7 +44,7 @@ rule rl_2 (rg_depth == 2'b11 && !rg_done);
     fifo_2.deq();
     rg_done <= True;
     rg_depth <= 2'b1;
-    endrule
+endrule
 
 method Action put_data(int a, int b) if (rg_depth == 0 && !rg_done);
     $display("1. sized fifo get values %0d and %0d", a, b);
