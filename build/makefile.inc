@@ -1,4 +1,4 @@
 SIM:= iverilog
-EG_NAME:= sorter
-TB_BSV:= bm4_testbench
-TB_BSV_TOP:= mk_bm4_testbench
+EG_NAME:= fifo
+TB_BSV:= asynch_fifo_testbench
+TB_BSV_TOP:= mk_asynch_fifo_testbench
