@@ -15,12 +15,23 @@ endinterface
 module mk_counter(Ifc_counter);
 
    Reg#(int) rg_count <- mkReg(0);
+   Wire#(int) wr_incr <- mkWire();
+   Wire#(int) wr_decr <- mkWire();
+
+   rule rl_incr;
+      $display("value in reg is: %0d", rg_count);
+      rg_count <= rg_count + wr_incr;
+   endrule
+
+   rule rl_decr;
+      $display("value in reg is: %0d", rg_count);
+      rg_count <= rg_count - wr_decr;
+   endrule
 
    method Action ma_start(Bool count_up);
       $display("counting is up? %0d", count_up);
-      $display("value in reg is: %0d", rg_count);
-      if (count_up == True)   rg_count <= rg_count + 1;
-      else rg_count <= rg_count - 1;
+      if (count_up == True)   wr_incr <= 1;
+      else wr_decr <= 1;
    endmethod
 
    method int ma_stop ();
