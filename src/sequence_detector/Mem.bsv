@@ -54,7 +54,6 @@ module mkMem (Mem_IFC);
    // BEHAVIOR
 
    rule rl_process_reqs;
-
       let memreq = f_memreqs.first;
       f_memreqs.deq;
       let x = regfile.sub (memreq);
