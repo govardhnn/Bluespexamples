@@ -46,12 +46,15 @@ module mkMem (Mem_IFC);
    FIFOF #(MAddr) f_memreqs <- mkFIFOF;
    FIFOF #(MData) f_memrsps <- mkFIFOF;
 
-   RegFile #(MAddr, MData) regfile <- mkRegFileLoad("Mem_Contents.hex",0,15);
+   RegFile #(MAddr, MData) regfile <- mkRegFileLoad("/home/govardhan/Desktop/Bluespexamples/src/sequence_detector/Mem_Contents.hex",0,15);
+   
+
 
    // ----------------------------------------------------------------
    // BEHAVIOR
 
    rule rl_process_reqs;
+
       let memreq = f_memreqs.first;
       f_memreqs.deq;
       let x = regfile.sub (memreq);
