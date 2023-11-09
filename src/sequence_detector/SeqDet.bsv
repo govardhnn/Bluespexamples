@@ -5,6 +5,7 @@ TODO: use typedef enum to simplify the FSM logic
 TODO: Start addr to be used uin the memory
 TODO: Remove the redundant new head in tuple3 - not required
 TODO: remove the redundant prev_head register in the module passed into the function
+TODO; Testbench's last iteration of total count will not be added into the register since it will exit the loop - Make a new rule for printing and checking if the r_numrsp is < 8
 */
 
 
@@ -15,7 +16,8 @@ import FIFOF :: *;
 import ClientServer :: *;
 import GetPut :: *;
 import FShow :: *;
-//typedef enum {INIT, START_CHECK, FINISH} SeqDetState deriving (Bits, Eq, FShow);
+
+typedef enum {INIT, FETCH, DETECT, FINISH} SeqDetState deriving (Bits, Eq, FShow);
 
 // To send back a 4bit value which store the last hex value back, and take it in again to check for patter around the borders: name them head_hex and tail_hex
 // we will essentailly be comparing the old last hex of the line to the new head of the line to check if ti matches the pattern
@@ -40,6 +42,8 @@ endfunction
 (*synthesize*)
 module mkSeqDet (SeqDetIfc);
 
+   Reg#(SeqDetState) rg_state <- mkReg(INIT);
+
    FIFOF #(MAddr) f_mreq <- mkFIFOF;
    FIFOF #(MData) f_mrsp <- mkFIFOF;
 
@@ -55,16 +59,13 @@ module mkSeqDet (SeqDetIfc);
    
    Reg#(int) rg_pattern_counter <- mkReg(0);
 
-   Reg#(int) rg_counts <- mkReg(0);
    Reg#(Bool) rg_initial <- mkReg(False);
    Reg#(Bool) rg_sent_req <- mkReg(False);
-
    Reg#(Bool) rg_got_data <- mkReg(False);
-
    Reg#(Bool) rg_finished_detect <- mkReg(False);
 
    rule rl_send_req_to_mem (rg_initial && !rg_sent_req && !rg_got_data && !rg_finished_detect);
-      // Rule to start the data fetch for a particular address
+   // Rule to start the data fetch for a particular address
       $display("2. Entered the rule rl_send_req_to_mem");
       $display("2. Fetch data from memory for the given address %0d", rg_start_address);
       f_mreq.enq(rg_start_address);

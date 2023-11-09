@@ -16,6 +16,7 @@ module mkTestbench (Empty);
    Reg #(Bit#(4)) r_numrsp <- mkReg (0);
    Reg#(Bool) rg_start <- mkReg (False);
 
+   Reg#(int) rg_total_pattern_count_tb <- mkReg(0);
    SeqDetIfc seqdet <- mkSeqDet;
    Mem_IFC mem <- mkMem;
 
@@ -43,7 +44,7 @@ module mkTestbench (Empty);
       rg_start <= False;
    endrule
 
-
+ 
    // Connect the memory interface to the sequence detector
    mkConnection (seqdet.mem, mem);
 endmodule
