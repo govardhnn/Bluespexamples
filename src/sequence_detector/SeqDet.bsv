@@ -9,11 +9,19 @@ import FShow :: *;
 
 // To send back a 4bit value which store the last hex value back, and take it in again to check for patter around the borders: name them head_hex and tail_hex
 
-function Int#(32) f1(MData x);
-   x=x-9;
-   return(68);
+function Int#(32) f1(MData data_line, Bit#(8) pattern);
+  // $display("");
+   int i = 0;
+   while (data_line > 0) begin
+      if (pattern == data_line[7:0]) begin
+         i = i + 1;
+      end
+      data_line = data_line >> 4;
+   end 
+   return(i);
 endfunction
 
+(*synthesize*)
 module mkSeqDet (SeqDetIfc);
 
    FIFOF #(MAddr) f_mreq <- mkFIFOF;
@@ -24,6 +32,8 @@ module mkSeqDet (SeqDetIfc);
 
    Reg#(Bit#(8)) rg_pattern <- mkReg(0);     
 
+   Reg#(Bit#(4)) rg_data_head <- mkReg(0);
+   Reg#(Bit#(4)) rg_data_tail <- mkReg(0);
    Reg#(MAddr) rg_start_address <- mkReg(0);
    Reg#(MData) rg_data_hold <- mkReg(0);
    
@@ -39,7 +49,7 @@ module mkSeqDet (SeqDetIfc);
 
    rule rl_send_req_to_mem (rg_initial && !rg_sent_req && !rg_got_data && !rg_finished_detect);
       // Rule to start the data fetch for a particular address
-      $display("2. Entered the rule rl_get_data_from_mem");
+      $display("2. Entered the rule rl_send_req_to_mem");
       $display("2. Fetch data from memory for the given address %0d", rg_start_address);
       f_mreq.enq(rg_start_address);
       //let data_fetched = f_mrsp.first;
@@ -58,11 +68,12 @@ module mkSeqDet (SeqDetIfc);
 
       rule rl_detector (rg_initial && rg_sent_req && rg_got_data && !rg_finished_detect);
          $display("3. Entered the rule rl_detector");
-         rg_finished_detect <= True;
          rg_got_data <= False;
-         rg_pattern_counter <= f1(rg_data_hold);
+         rg_pattern_counter <= f1(rg_data_hold, rg_pattern);
          //$display(" Sending data and %d and pattern %0d to function", f1(rg_data_hold));
-         let lv_rg_counts = f1(rg_data_hold);
+         //let lv_rg_counts = f1(rg_data_hold);
+         rg_finished_detect <= True;
+
          //let lv_rg_counts = fn_pattern_detector(rg_data_hold, rg_pattern);
       endrule
 
@@ -82,7 +93,9 @@ rg_finished_detect <= True;
 
    method Action request (ReqType req) if (!rg_initial && !rg_sent_req && !rg_got_data && !rg_finished_detect);
       $display("1. SeqDet: request");
-      $display("1. SeqDet: pattern is: %d, address to start from: %d and words: %0d", req.pattern, req.addr, req.words);
+      $display("1. SeqDet: pattern is:", fshow(req.pattern));
+      $display("1. SeqDet address is:", fshow(req.addr));
+      $display("1. SeqDet words to start from are: ", fshow(req.words));
       // storing all the data into registers from the inputs of the interface
       rg_pattern <= req.pattern;
       rg_start_address <= req.addr;
@@ -91,7 +104,7 @@ rg_finished_detect <= True;
    endmethod
 
    method ActionValue #(int) response if (rg_initial && rg_sent_req && !rg_got_data && rg_finished_detect);
-      $display("3. MAV response, data is: %d", rg_data_hold);
+      $display("3. MAV response, data is: ", fshow(rg_data_hold));
       
       //rg_data_hold <= data_fetched;
       // need to increment the rg_start_address here
