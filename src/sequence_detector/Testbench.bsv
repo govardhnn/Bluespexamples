@@ -43,6 +43,7 @@ module mkTestbench (Empty);
       rg_start <= False;
    endrule
 
+
    // Connect the memory interface to the sequence detector
    mkConnection (seqdet.mem, mem);
 endmodule

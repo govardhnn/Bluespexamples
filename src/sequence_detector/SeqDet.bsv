@@ -9,16 +9,21 @@ import FShow :: *;
 
 // To send back a 4bit value which store the last hex value back, and take it in again to check for patter around the borders: name them head_hex and tail_hex
 
-function Int#(32) f1(MData data_line, Bit#(8) pattern);
+function Tuple3#(Int#(32), Bit#(4), Bit#(4)) f1(MData data_line, Bit#(8) pattern, Bit#(4) prev_head, Bit#(4) prev_tail);
   // $display("");
    int i = 0;
+   Bit#(4) new_head = data_line[255:252];
+   Bit#(4) new_tail = data_line[3:0];
+
+   if(prev_tail == pattern[7:4] && new_head == pattern[3:0]) i = i + 1;
+
    while (data_line > 0) begin
       if (pattern == data_line[7:0]) begin
          i = i + 1;
       end
       data_line = data_line >> 4;
    end 
-   return(i);
+   return(tuple3(i, new_head, new_tail));
 endfunction
 
 (*synthesize*)
@@ -32,8 +37,8 @@ module mkSeqDet (SeqDetIfc);
 
    Reg#(Bit#(8)) rg_pattern <- mkReg(0);     
 
-   Reg#(Bit#(4)) rg_data_head <- mkReg(0);
-   Reg#(Bit#(4)) rg_data_tail <- mkReg(0);
+   Reg#(Bit#(4)) rg_data_prev_head <- mkReg(0);
+   Reg#(Bit#(4)) rg_data_prev_tail <- mkReg(0);
    Reg#(MAddr) rg_start_address <- mkReg(0);
    Reg#(MData) rg_data_hold <- mkReg(0);
    
@@ -69,27 +74,17 @@ module mkSeqDet (SeqDetIfc);
       rule rl_detector (rg_initial && rg_sent_req && rg_got_data && !rg_finished_detect);
          $display("3. Entered the rule rl_detector");
          rg_got_data <= False;
-         rg_pattern_counter <= f1(rg_data_hold, rg_pattern);
+         let lv_data_from_fn = f1(rg_data_hold, rg_pattern, rg_data_prev_head, rg_data_prev_tail);
+         rg_pattern_counter <= tpl_1(lv_data_from_fn);
+         rg_data_prev_head <= tpl_2(lv_data_from_fn);
+         rg_data_prev_tail <= tpl_3(lv_data_from_fn);
+
          //$display(" Sending data and %d and pattern %0d to function", f1(rg_data_hold));
          //let lv_rg_counts = f1(rg_data_hold);
          rg_finished_detect <= True;
 
          //let lv_rg_counts = fn_pattern_detector(rg_data_hold, rg_pattern);
       endrule
-
-     
-      // function int fn_pattern_detector(int data, int pattern);
-      //    $display("3.1 Entered the function fn_pattern_detector");
-      //    //let lv_rg_hold = rg_pattern;
-      //    return(10);
-      // endfunction
-/*
-rg_got_data and then process the data for the pattern
-
-
-rg_got_data < False
-rg_finished_detect <= True;
-*/
 
    method Action request (ReqType req) if (!rg_initial && !rg_sent_req && !rg_got_data && !rg_finished_detect);
       $display("1. SeqDet: request");
