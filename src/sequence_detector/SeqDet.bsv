@@ -7,11 +7,11 @@ import GetPut :: *;
 import FShow :: *;
 //typedef enum {INIT, START_CHECK, FINISH} SeqDetState deriving (Bits, Eq, FShow);
 
+// To send back a 4bit value which store the last hex value back, and take it in again to check for patter around the borders: name them head_hex and tail_hex
+
 function Int#(32) f1(MData x);
-   //$display("Entered the function");
-   //provisos(Arith#(Reg#(Bit#(256)))) 
    x=x-9;
-   return(20);
+   return(68);
 endfunction
 
 module mkSeqDet (SeqDetIfc);
@@ -48,6 +48,8 @@ module mkSeqDet (SeqDetIfc);
    endrule
 
       rule rl_get_data_from_mem (rg_initial && rg_sent_req && !rg_got_data && !rg_finished_detect);
+         // Using the interface mem GP client to send and recieve the data from the memory (Mem_Contents.hex)
+         
          $display("2.5 Entered the rule rl_get_data_from_mem ", fshow(f_mrsp.first));
          rg_data_hold <= f_mrsp.first;
          f_mrsp.deq;
@@ -59,8 +61,8 @@ module mkSeqDet (SeqDetIfc);
          rg_finished_detect <= True;
          rg_got_data <= False;
          rg_pattern_counter <= f1(rg_data_hold);
-         $display(" Sending data and %d and pattern %0d to function", f1(rg_data_hold));
-
+         //$display(" Sending data and %d and pattern %0d to function", f1(rg_data_hold));
+         let lv_rg_counts = f1(rg_data_hold);
          //let lv_rg_counts = fn_pattern_detector(rg_data_hold, rg_pattern);
       endrule
 

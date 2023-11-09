@@ -21,7 +21,8 @@ module mkTestbench (Empty);
 
    rule rl_req (!rg_start);
       let req = ReqType {
-			 addr: extend(r_numreq << 2)
+			 //addr: extend(r_numreq << 2) -- SeqDet.bsv has to parse the memory and process for pattern one line at a time
+          addr: extend(r_numreq)
 			 , words: 4
 			 , pattern: 8'h43 };
       $display("======================================");
@@ -37,7 +38,8 @@ module mkTestbench (Empty);
       $display ("TB Recieving rl_rsp:: %0d ", cur_cycle, r);
       $display ("No of times the pattern was detected: %0d", r);
       $display("======================================");
-      if (r_numrsp == 2) $finish();
+      // checking the number of lines being read from the Mem_Contents.hex has been read for all the 8 lines, ie 0 to 7.
+      if (r_numrsp == 7) $finish();
       rg_start <= False;
    endrule
 
