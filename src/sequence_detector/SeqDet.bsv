@@ -1,3 +1,13 @@
+/* 
+Govardhan's Sequence Detector Assignment - BSV Workshop - InCore Semiconductors, Chennai
+
+TODO: use typedef enum to simplify the FSM logic
+TODO: Start addr to be used uin the memory
+TODO: Remove the redundant new head in tuple3 - not required
+TODO: remove the redundant prev_head register in the module passed into the function
+*/
+
+
 package SeqDet;
 
 import SeqDetTypes :: *;
@@ -8,6 +18,7 @@ import FShow :: *;
 //typedef enum {INIT, START_CHECK, FINISH} SeqDetState deriving (Bits, Eq, FShow);
 
 // To send back a 4bit value which store the last hex value back, and take it in again to check for patter around the borders: name them head_hex and tail_hex
+// we will essentailly be comparing the old last hex of the line to the new head of the line to check if ti matches the pattern
 
 function Tuple3#(Int#(32), Bit#(4), Bit#(4)) f1(MData data_line, Bit#(8) pattern, Bit#(4) prev_head, Bit#(4) prev_tail);
   // $display("");
@@ -33,12 +44,12 @@ module mkSeqDet (SeqDetIfc);
    FIFOF #(MData) f_mrsp <- mkFIFOF;
 
    Reg#(RspType) r_rsp <- mkReg (tagged Invalid);
-   //Reg#(SeqDetState) rg_seq_state <- mkReg(INIT);
 
    Reg#(Bit#(8)) rg_pattern <- mkReg(0);     
 
    Reg#(Bit#(4)) rg_data_prev_head <- mkReg(0);
    Reg#(Bit#(4)) rg_data_prev_tail <- mkReg(0);
+
    Reg#(MAddr) rg_start_address <- mkReg(0);
    Reg#(MData) rg_data_hold <- mkReg(0);
    
@@ -79,11 +90,7 @@ module mkSeqDet (SeqDetIfc);
          rg_data_prev_head <= tpl_2(lv_data_from_fn);
          rg_data_prev_tail <= tpl_3(lv_data_from_fn);
 
-         //$display(" Sending data and %d and pattern %0d to function", f1(rg_data_hold));
-         //let lv_rg_counts = f1(rg_data_hold);
          rg_finished_detect <= True;
-
-         //let lv_rg_counts = fn_pattern_detector(rg_data_hold, rg_pattern);
       endrule
 
    method Action request (ReqType req) if (!rg_initial && !rg_sent_req && !rg_got_data && !rg_finished_detect);
@@ -100,13 +107,7 @@ module mkSeqDet (SeqDetIfc);
 
    method ActionValue #(int) response if (rg_initial && rg_sent_req && !rg_got_data && rg_finished_detect);
       $display("3. MAV response, data is: ", fshow(rg_data_hold));
-      
-      //rg_data_hold <= data_fetched;
-      // need to increment the rg_start_address here
-
-      // in pattern detector rule: rg_pattern_counter <= rg_pattern_counter + 1;
       rg_initial <= False;
-      //rg_got_data <= False;
       rg_sent_req <= False;
       rg_finished_detect <= False;
       return(rg_pattern_counter);
