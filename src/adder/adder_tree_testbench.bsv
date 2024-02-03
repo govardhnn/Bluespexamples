@@ -2,7 +2,6 @@ package adder_tree_testbench;
 
 import adder_tree :: *;
 
-
 (*synthesize*)
 
 module mk_adder_tree_testbench(Empty);

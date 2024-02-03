@@ -1,4 +1,4 @@
 SIM:= iverilog
-EG_NAME:= sorter
-TB_BSV:= bm4_testbench
+EG_NAME:= adder 
+TB_BSV:= adder_tree_testbench
 TB_BSV_TOP:= mk_${TB_BSV}

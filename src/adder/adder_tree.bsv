@@ -1,13 +1,20 @@
 package adder_tree;
 
-interface Ifc_adder_tree;
-   method Action ma_get_inputs(int in1, int in2, int in3, int in4, int in5, int in6, int in7, int in8);
-   method ActionValue#(int) mav_return_sum();
+import Vector :: *;
 
+typedef struct {
+   Vector#(int, 8) inputs;
+} tree_inputs deriving(Bits, Eq, FShow);
+
+interface Ifc_adder_tree;
+   method Action ma_get_inputs(tree_inputs input);
+   method ActionValue#(int) mav_return_sum();
 endinterface: Ifc_adder_tree
 
+(*synthesize*)
 module mk_adder_tree(Ifc_adder_tree);
 
+   Reg#(tree_inputs) rg_inputs <- mkReg(0);
    Reg#(int) rg_1 <- mkReg(0);
    Reg#(int) rg_2 <- mkReg(0);
    Reg#(int) rg_3 <- mkReg(0);
