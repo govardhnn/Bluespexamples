@@ -21,7 +21,7 @@ package SeqDetTypes;
 
         interface SeqDetIfc;
         method Action request (ReqType req);
-        method ActionValue #(RspType) response;
+        method ActionValue #(int) response;
         interface Client #(MAddr, MData) mem;
         endinterface
 

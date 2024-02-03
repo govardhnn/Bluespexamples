@@ -17,6 +17,13 @@ link:src/multiplier/mac_2x2.bsv[mac_2x2] using four mac_1x1 +
 | link:src/shifter[Shifter] | link:src/shifter/shifter.bsv[shifter] 
 | link:src/sorter[Sorter] | link:src/sorter/cae.bsv[cae] +
 link:src/sorter/bm4.bsv[bm4] using six cae blocks 
+| link:src/sequence_detector[Sequence Detector] | link:src/sequence_detector/SeqDet.bsv[SeqDet]
+|Communication Protocols |
+UART + 
+SPI + 
+I2C +
+USB +
+Ethernet
 |===
 
 Topic wise examples:
