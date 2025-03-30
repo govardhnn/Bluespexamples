@@ -7,9 +7,9 @@ VSIM ?= $(SIM)
 TOPFILE ?= $(FOLDER)/src/$(EG)/$(TB_BSV).bsv
 TOPMODULE ?= $(TB_BSV_TOP)
 
-BSC_COMP_FLAGS = -elab -keep-fires -show-schedule -aggressive-conditions -no-warn-action-shadowing
+BSC_COMP_FLAGS = -elab -keep-fires -show-schedule  -no-warn-action-shadowing
 BSC_LINK_FLAGS = -keep-fires
-BSC_PATHS = -p $(FOLDER)/src/$(EG)/:$(FOLDER)/src/Common:%/Prelude:%/Libraries
+BSC_PATHS = -p $(FOLDER)/src/$(EG)/:$(FOLDER)/src/Common:%/Libraries:bsc-contrib/Libraries/Misc
 
 V_DIRS = -vdir verilog_dir -bdir build_v -info-dir build_v
 VSIM_EXE = $(TOPMODULE)_vsim

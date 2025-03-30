@@ -5,6 +5,7 @@
 build_v/
 backup
 build/verilog_dir
+build/out
 *.cxx
 *.h
 *.o

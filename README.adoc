@@ -4,36 +4,25 @@ Bluespec Examples (Bluespexamples)
 
 == Index
 
-Design wise examples:
+Basic examples:
 |===
 | Design | Description
-| link:src/adder[Adder] | link:src/adder/half_adder.bsv[half adder] + 
-link:src/adder/full_adder.bsv[full adder] using two half adders and OR +
-link:srv/adder/adder_tree.bsv[adder tree] 
-| link:src/multiplier/[Multiplier] | link:src/multiplier/simple_multipler.bsv[simple multiplier] +
-link:src/multiplier/mac_1x1.bsv[mac_1x1] +
-link:src/multiplier/mac_2x2.bsv[mac_2x2] using four mac_1x1 +
-| link:src/counter[Counter] | link:src/counter/counter.bsv[counter]
-| link:src/shifter[Shifter] | link:src/shifter/shifter.bsv[shifter] 
-| link:src/sorter[Sorter] | link:src/sorter/cae.bsv[cae] +
-link:src/sorter/bm4.bsv[bm4] using six cae blocks 
-|Communication Protocols |
-UART + 
-SPI + 
-I2C +
-USB +
-Ethernet
+| link:src/adder[Adder] | link:src/adder/half_adder.bsv[Half Adder] + 
+link:src/adder/full_adder.bsv[Full Adder] using two half adders and OR +
+link:srv/adder/adder_tree.bsv[Adder Tree] 
+| link:src/multiplier/[Multiplier] | link:src/multiplier/simple_multipler.bsv[Two Input Multiplier] +
+link:src/multiplier/mac_1x1.bsv[Multiply and Accumulate(MAC) 1x1] +
+link:src/multiplier/mac_2x2.bsv[Multiply and Accumulate(MAC) 2x2] using four MAC_1x1 +
+| link:src/counter[Counter] | link:src/counter/counter.bsv[Counter]
+| link:src/shifter[Shifter] | link:src/shifter/shifter.bsv[Shifter] 
+| link:src/sorter[Sorter] | link:src/sorter/cae.bsv[Two input Compare and Exchange(CAE)] +
+link:src/sorter/bm4.bsv[4 input Bitonic Merge Unit] using six CAE blocks 
 |===
 
-Topic wise examples:
+Advanced Examples using `bsc-contrib`:
 
 |===
-| Design | Description +
-| FIFO | 
-| Get Put |
-| Client Server |
-| Connectable |
-| Vectors |
+| Design | Description
 |===
 
 == Directory Structure
@@ -52,25 +41,6 @@ Topic wise examples:
 │   └── workspace/	    (Scratch worspace)
 └── waveforms/          (Contains all the simulation waveform screenshots)
 ```
-
-=== Coding Guidelines
-
-|===
-|*Prefix* | *Meaning*
-| mk_ | module
-| Ifc_ | Interface
-| subifc_ | Sub Interface
-| fn_ | Function
-| rl_ | rule
-| ma_ | Method Action
-| mv_ | Method Value
-| mav_ | Method ActionValue
-| rg_ | register
-| wr_ | wire
-| tpl_ | tuple
-| ff_| fifo
-
-|===
 
 == Resources:
 
