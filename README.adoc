@@ -1,8 +1,6 @@
 = Bluespexamples
 
-Bluespec Examples (Bluespexamples)
-
-== Index
+Bluespec is High Level Hardware Description language [More on the language](https://github.com/B-Lang-org/bsc/blob/main/README.md), and the following are a collection of Bluespec Examples (Bluespexamples).
 
 Basic examples:
 |===
@@ -23,6 +21,7 @@ Advanced Examples using `bsc-contrib`:
 
 |===
 | Design | Description
+| TODO | TODO
 |===
 
 == Directory Structure

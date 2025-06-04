@@ -1,7 +1,7 @@
 include makefile.inc
 
 EG ?= $(EG_NAME)
-FOLDER ?= /home/govardhan/github/Bluespexamples
+FOLDER ?= ../
 VSIM ?= $(SIM)
 
 TOPFILE ?= $(FOLDER)/src/$(EG)/$(TB_BSV).bsv
