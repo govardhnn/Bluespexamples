@@ -1,6 +1,8 @@
 = Bluespexamples
 
-Bluespec is High Level Hardware Description language [More on the language](https://github.com/B-Lang-org/bsc/blob/main/README.md), and the following are a collection of Bluespec Examples (Bluespexamples).
+Bluespec is High Level Hardware Description language link:https://github.com/B-Lang-org/bsc/blob/main/README.md[(official feature list)] used in academia and industry. The following are a collection of Bluespec Examples (Bluespexamples).
+
+Dependencies: link:https://github.com/B-Lang-org/bsc/blob/main/INSTALL.md[`bsc`] and link:https://github.com/steveicarus/iverilog[`iverilog`]. 
 
 Basic examples:
 |===
@@ -19,10 +21,11 @@ link:src/sorter/bm4.bsv[4 input Bitonic Merge Unit] using six CAE blocks
 
 Advanced Examples using `bsc-contrib`:
 
-|===
-| Design | Description
-| TODO | TODO
-|===
+TODO
+
+== Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes. 
 
 == Directory Structure
 
